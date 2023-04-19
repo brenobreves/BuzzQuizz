@@ -20,17 +20,18 @@
     <div class="pag1 escondido">
         <div class="header3">
             <div class="headtitle3">BuzzQuizz</div>
-        </div>    
+        </div>
         <div class="conteudopag1">
             <div class="semquizz1">
                 <div class="textsemquizz1">Você não criou nenhum quizz ainda :(</div>
                 <button class="criarprimeiroquizz1">Criar Quizz</button>
             </div>
-        <!-- PAGINA 1 PARTE 1 com quizz-->
+            <!-- PAGINA 1 PARTE 1 com quizz-->
             <div class="seusquizzes1 escondido">
                 <div class="hdseusquizzes1">
                     <div class="hlsquizzes1">Seus quizzes</div>
-                    <button class="criaroutroquizz1"><ion-icon class="criarquizzicon" name="add-circle"></ion-icon></button>
+                    <button class="criaroutroquizz1"><ion-icon class="criarquizzicon"
+                            name="add-circle"></ion-icon></button>
                 </div>
                 <div class="containerseuquizz1">
                     <div class="quizz1">
@@ -43,7 +44,7 @@
                     </div>
                 </div>
             </div>
-        <!-- PAGINA 1 PARTE 2 todos os quizzes-->       
+            <!-- PAGINA 1 PARTE 2 todos os quizzes-->
             <div class="todosquizz1">
                 <div class="hdtodosquizzes1">Todos os Quizzes</div>
                 <div class="containerseuquizz1">
@@ -75,15 +76,15 @@
             </div>
         </div>
     </div>
- 
-    
-    
-    
-    
-    
+
+
+
+
+
+
     <!-- PAGINA 2 PARTE 1-->
 
-    <div class="pagina2 escondido">
+    <div class="pagina2 ">
         <div class="topo2">
             <div class="titulo-topo2">BuzzQuizz</div>
         </div>
@@ -98,21 +99,21 @@
                 <div class="todas-imagem-pergunta-1">
                     <div class="lado-esquerdo-1">
                         <div class="primeira-imagem-1">
-                            <div class="imagem-1"></div>
+                            <div class="imagem-1" onclick="selecionarResposta1(this)"></div>
                             <p class="nome-1 ">nome primeira imagem</p>
                         </div>
                         <div class="segunda-imagem-1">
-                            <div class="imagem-1"></div>
+                            <div class="imagem-1" onclick="selecionarResposta1(this)"></div>
                             <p class="nome-1 ">nome segunda imagem</p>
                         </div>
                     </div>
                     <div class="lado-direito-1">
                         <div class="terceira-imagem-1">
-                            <div class="imagem-1"></div>
+                            <div class="imagem-1" onclick="selecionarResposta1(this)"></div>
                             <p class="nome-1 ">nome terceira imagem</p>
                         </div>
                         <div class="quarta-imagem-1">
-                            <div class="imagem-1"></div>
+                            <div class="imagem-1" onclick="selecionarResposta1(this)"></div>
                             <p class="nome-1 ">nome quarta imagem</p>
                         </div>
                     </div>
@@ -126,21 +127,21 @@
                 <div class="todas-imagem-pergunta-2">
                     <div class="lado-esquerdo-2">
                         <div class="primeira-imagem-2">
-                            <div class="imagem-2"></div>
+                            <div class="imagem-2" onclick="selecionarResposta2(this)"></div>
                             <p class="nome-2">nome primeira imagem</p>
                         </div>
                         <div class="segunda-imagem-2">
-                            <div class="imagem-2"></div>
+                            <div class="imagem-2" onclick="selecionarResposta2(this)"></div>
                             <p class="nome-2">nome segunda imagem</p>
                         </div>
                     </div>
                     <div class="lado-direito-2">
                         <div class="terceira-imagem-2">
-                            <div class="imagem-2"></div>
+                            <div class="imagem-2" onclick="selecionarResposta2(this)"></div>
                             <p class="nome-2">nome terceira imagem</p>
                         </div>
                         <div class="quarta-imagem-2">
-                            <div class="imagem-2"></div>
+                            <div class="imagem-2" onclick="selecionarResposta2(this)"></div>
                             <p class="nome-2">nome quarta imagem</p>
                         </div>
                     </div>
@@ -154,28 +155,28 @@
                 <div class="todas-imagem-pergunta-3">
                     <div class="lado-esquerdo-3">
                         <div class="primeira-imagem-3">
-                            <div class="imagem-3"></div>
+                            <div class="imagem-3" onclick="selecionarResposta3(this)"></div>
                             <p class="nome-3">nome primeira imagem</p>
                         </div>
                         <div class="segunda-imagem-3">
-                            <div class="imagem-3"></div>
+                            <div class="imagem-3" onclick="selecionarResposta3(this)"></div>
                             <p class="nome-3">nome segunda imagem</p>
                         </div>
                     </div>
                     <div class="lado-direito-3">
                         <div class="terceira-imagem-3">
-                            <div class="imagem-3"></div>
+                            <div class="imagem-3" onclick="selecionarResposta3(this)"></div>
                             <p class="nome-3">nome terceira imagem</p>
                         </div>
                         <div class="quarta-imagem-3">
-                            <div class="imagem-3"></div>
+                            <div class="imagem-3" onclick="selecionarResposta3(this)"></div>
                             <p class="nome-3">nome quarta imagem</p>
                         </div>
                     </div>
 
                 </div>
             </div>
-            <div class="finalizando-acerto">
+            <div class="finalizando-acerto escondido">
                 <div class="nivel-acerto">
                     <p>nivel de acerto 50% teste</p>
                 </div>
@@ -199,6 +200,12 @@
                     </div>
 
                 </div>
+            </div>
+            <div class="reiniciar-quiz" onclick="reiniciar()">
+                <p> Reiniciar Quizz</p>
+            </div>
+            <div class="voltar-pro-home" onclick="voltarHome()">
+                <p>Voltar pra home</p>
             </div>
         </div>
 
