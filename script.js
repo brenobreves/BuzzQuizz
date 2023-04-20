@@ -1,3 +1,4 @@
+//PAGE 3 Sair da página de opções básicas de Quizz e ir para perguntas//
 function page312() {
     const page3 = document.querySelector('.page3');
     const page31 = document.querySelector('.page31');
@@ -6,6 +7,7 @@ function page312() {
 
 }
 
+///PAGE 3 Sair da página de criar perguntas  e  ir para níveis///
 function page323() {
     const page31 = document.querySelector('.page31');
     const page32 = document.querySelector('.page32');
@@ -13,6 +15,7 @@ function page323() {
     page32.classList.remove('escondido');
 }
 
+///PAGE 3 Sair da página de Níveis e finalizar o quizz///
 function page334() {
     const page32 = document.querySelector('.page32');
     const page33 = document.querySelector('.page33');
@@ -20,6 +23,7 @@ function page334() {
     page33.classList.remove('escondido');
 }
 
+///// PAGE 3 Quizz finalizado, voltar pra home ////
 function home(){
     const page33 = document.querySelector('.page33');
     page33.classList.add('escondido');
