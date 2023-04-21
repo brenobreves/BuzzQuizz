@@ -1,3 +1,13 @@
+////// PAGE 1 ////
+function page1to3(){
+    const page1 = document.querySelector('.pag1');
+    const page3 = document.querySelector('.page3');
+    page1.classList.add('escondido');
+    page3.classList.remove('escondido');
+}
+
+////// PAGE 1 FIM ////
+
 
 
 ////// PAGE 3 ////
