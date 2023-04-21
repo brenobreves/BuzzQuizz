@@ -212,7 +212,7 @@
     </div>
 
     <!-- PAGINA 3 PARTE 1-->
-    <div class="page3 escondido">
+    <div class="page3">
         <div class="header3">
             <div class="headtitle3">BuzzQuizz</div>
         </div>
@@ -220,12 +220,12 @@
             <div class="box3">
                 <div class="title3">Comece pelo começo</div>
                 <div class="questions3">
-                    <input type="text" placeholder="Título do seu quizz">
-                    <input type="text" placeholder="URL da imagem do seu quizz">
-                    <input type="text" placeholder="Quantidade de perguntas do quizz">
-                    <input type="text" placeholder="Quantidade de níveis do quizz">
+                    <input class="quiztitle3" type="text" placeholder="Título do seu quizz">
+                    <input class="quizimgurl3"  type="text" placeholder="URL da imagem do seu quizz">
+                    <input class="quiznump3"type="text" placeholder="Quantidade de perguntas do quizz">
+                    <input class="quizlev3"type="text" placeholder="Quantidade de níveis do quizz">
                 </div>
-                <button class="proceed3">Prosseguir pra criar perguntas</button>
+                <button onclick="page312()"class="proceed3">Prosseguir pra criar perguntas</button>
             </div>
         </div>
     </div>
@@ -267,62 +267,62 @@
                     </div>
                 </div>
 
-                <div class="questions312">
-                    <div class="title312">Pergunta 2</div><ion-icon name="create-outline"></ion-icon>
+                <div class="questions312 q2">
+                    <div class="title312">Pergunta 2</div><ion-icon onclick="questions32()" name="create-outline"></ion-icon>
                 </div>
-                <div class="questions312">
-                    <div class="title312">Pergunta 3</div><ion-icon name="create-outline"></ion-icon>
+                <div class="questions312 q3">
+                    <div class="title312">Pergunta 3</div><ion-icon onclick="questions33()" name="create-outline"></ion-icon>
                 </div>
 
-                <div class="questions31 escondido">
+                <div class="questions31 qq2 escondido">
                     <div class="setor">
                         <div class="title31">Pergunta 2</div>
                         <input type="text" placeholder="Texto da pergunta">
                         <input type="text" placeholder="Cor de fundo da pergunta">
                     </div>
-                    <div class="setor escondido">
+                    <div class="setor ">
                         <div class="title31">Resposta correta</div>
                         <input type="text" placeholder="Resposta correta">
                         <input type="text" placeholder="URL da imagem">
                     </div>
-                    <div class="setor escondido">
+                    <div class="setor ">
                         <div class="title31">Respostas incorretas</div>
                         <input type="text" placeholder="Resposta incorreta 1">
                         <input type="text" placeholder="URL da imagem 1">
                     </div>
-                    <div class="setor escondido"><input type="text" placeholder="Resposta incorreta 2">
+                    <div class="setor "><input type="text" placeholder="Resposta incorreta 2">
                         <input type="text" placeholder="URL da imagem 2">
                     </div>
-                    <div class="setor escondido"><input type="text" placeholder="Resposta incorreta 3">
+                    <div class="setor "><input type="text" placeholder="Resposta incorreta 3">
                         <input type="text" placeholder="URL da imagem 3">
                     </div>
                 </div>
 
-                <div class="questions31 escondido">
+                <div class="questions31 qq3 escondido">
                     <div class="setor">
                         <div class="title31">Pergunta 3</div>
                         <input type="text" placeholder="Texto da pergunta">
                         <input type="text" placeholder="Cor de fundo da pergunta">
                     </div>
-                    <div class="setor escondido">
+                    <div class="setor ">
                         <div class="title31">Resposta correta</div>
                         <input type="text" placeholder="Resposta correta">
                         <input type="text" placeholder="URL da imagem">
                     </div>
-                    <div class="setor escondido">
+                    <div class="setor ">
                         <div class="title31">Respostas incorretas</div>
                         <input type="text" placeholder="Resposta incorreta 1">
                         <input type="text" placeholder="URL da imagem 1">
                     </div>
-                    <div class="setor escondido"><input type="text" placeholder="Resposta incorreta 2">
+                    <div class="setor "><input type="text" placeholder="Resposta incorreta 2">
                         <input type="text" placeholder="URL da imagem 2">
                     </div>
-                    <div class="setor escondido"><input type="text" placeholder="Resposta incorreta 3">
+                    <div class="setor "><input type="text" placeholder="Resposta incorreta 3">
                         <input type="text" placeholder="URL da imagem 3">
                     </div>
                 </div>
 
-                <button class="proceed3">Prosseguir pra criar perguntas</button>
+                <button onclick="page323()"class="proceed3">Prosseguir pra criar níveis</button>
             </div>
         </div>
     </div>
@@ -337,7 +337,8 @@
         </div>
         <div class="body3">
             <div class="box3">
-                <div class="title3">Crie suas perguntas</div>
+                <div class="title3">Agora, decida os níveis
+                </div>
                 <div class="questions31">
                     <div class="setor">
                         <div class="title31">Nível 1</div>
@@ -358,14 +359,14 @@
 
 
 
-                <button class="proceed3">Prosseguir pra criar perguntas</button>
+                <button onclick="page334()"class="proceed3">Finalizar Quizz</button>
             </div>
         </div>
     </div>
-    <!-- FIM PAGINA 3 PARTE 2-->
+    <!-- FIM PAGINA 3 PARTE 3-->
 
     <!-- PAGINA 3 PARTE 4-->
-    <div class="page32 escondido">
+    <div class="page33 escondido">
         <div class="header3">
             <div class="headtitle3">BuzzQuizz</div>
         </div>
@@ -378,7 +379,7 @@
                     <div class="imgtitle33"> Titulo do quizz aqui </div>
                 </div>
                 <button class="proceed3">Acessar Quizz</button>
-                <button class="home">Voltar pra home</button>
+                <button onclick="home()"class="home">Voltar pra home</button>
             </div>
         </div>
     </div>
