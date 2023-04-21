@@ -1,3 +1,6 @@
+////// TOKEN //////
+axios.defaults.headers.common['Authorization'] = '9maaDDkKFQ1saSPY3udlpWmT';
+
 ////// PAGE 1 ////
 function page1to3(){
     const page1 = document.querySelector('.pag1');

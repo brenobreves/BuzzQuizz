@@ -5,7 +5,9 @@
     display: flex;
     justify-content: center;
 }
-
+button:hover{
+    cursor: pointer;
+}
 .conteudopag1 {
     width: 340px;
     height: 100%;
