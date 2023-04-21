@@ -556,13 +556,16 @@
     color: white;
 }
 
-.box3 {
+.box3,
+.box31,
+.box32 {
     margin-top: 71px;
     display: flex;
     flex-direction: column;
     align-items: center;
 
 }
+
 
 .title3 {
     font-family: 'Roboto', sans-serif;
@@ -619,32 +622,23 @@
     line-height: 25px;
     margin-bottom: 30px;
 }
-.proceed3:hover{
+
+.proceed3:hover {
     cursor: pointer;
 }
+
 @media (max-width: 1100px) {
+    .page3 {
+        height: 100%;
+    }
+
     .box3 {
-     width: 100%;
-    
-    }
-    .title3 {
         width: 100%;
-        margin:none;
-    }
-    .questions3{
-        width: 100%;
-        margin:none;
 
     }
-    .questions3 input{
-        width: 90%;
-        margin:none;
 
-    }
-    .proceed3{
-      width: 80%;
-        margin:none;
-
+    .questions3 {
+        width: 111%;
     }
 }
 
@@ -732,6 +726,25 @@
     margin-left: 20px;
 }
 
+@media (max-width: 1100px) {
+    .page31 {
+        height: 100%;
+    }
+
+    .box3 {
+        width: 100%;
+
+    }
+
+    .questions31 {
+        width: 100%;
+    }
+
+    .questions312 {
+        width: 100%;
+    }
+}
+
 /*Fim da Página 3- 2 */
 
 
@@ -746,6 +759,12 @@
     margin-top: 69px;
 }
 
+@media (max-width: 1100px) {
+    .page32 {
+        height: 100%;
+    }
+}
+
 /*Fim da Página 3- 3 */
 
 /*página 3 - 4 */
@@ -758,6 +777,7 @@
     justify-content: center;
     margin-top: 69px;
 }
+
 .imgp3 {
     width: 500px;
     height: 266px;
@@ -765,6 +785,7 @@
     margin-top: 46px;
     margin-bottom: 45px;
     position: relative;
+    border-radius: 10px;
 }
 
 .home {
@@ -778,7 +799,7 @@
     color: #818181;
 }
 
-.home:hover{
+.home:hover {
     cursor: pointer;
 }
 
@@ -793,6 +814,16 @@
     color: white;
 }
 
+@media (max-width: 1100px) {
+    .page33 {
+        height: 900px;
+    }
+
+    .imgp3 {
+        width: 100%;
+    }
+}
+
 /*Fim da Página 3- 4 */
 
 
@@ -805,6 +836,7 @@
     height: 100%;
     background: rgb(0, 0, 0);
     background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    border-radius: 10px;
 }
 
 .escondido {
