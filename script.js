@@ -2,7 +2,7 @@
 axios.defaults.headers.common['Authorization'] = '9maaDDkKFQ1saSPY3udlpWmT';
 
 ////// PAGE 1 ////
-function page1to3(){
+function page1to3() {
     const page1 = document.querySelector('.pag1');
     const page3 = document.querySelector('.page3');
     page1.classList.add('escondido');
@@ -10,6 +10,58 @@ function page1to3(){
 }
 
 ////// PAGE 1 FIM ////
+
+// PAGINA 2 Quando a pessoa para selecionar a imagem da pergunta-1
+
+function selecionarResposta1(respota1) {
+
+    // quando a pessoa clicar na umagem desejada ele faz adicionar certo ou errado
+    // colocar a cor certa no nome da imagem
+    const selecionadoPeloUsuario = respota1.querySelector('.imagem-1');
+    selecionadoPeloUsuario.classList.add('selecionado');
+    const respostaPergunta1 = respota1.querySelector('.nome-1');
+    respostaPergunta1.classList.add('acertou');
+    // vai procurar se tem a classe selecionada
+    const verificandoPrimeira = document.querySelector('.todas-imagem-pergunta-1 .lado-esquerdo-1 .primeira-imagem-1 .selecionado');
+    const verificandoSeguda = document.querySelector('.todas-imagem-pergunta-1 .lado-esquerdo-1 .segunda-imagem-1 .selecionado');
+    const verificandoTerceira = document.querySelector('.todas-imagem-pergunta-1 .lado-direito-1 .terceira-imagem-1 .selecionado');
+    const verificandoQuarta = document.querySelector('.todas-imagem-pergunta-1 .lado-direito-1 .quarta-imagem-1 .selecionado');
+
+    console.log(verificandoPrimeira);
+    console.log(verificandoSeguda);
+    console.log(verificandoTerceira);
+    console.log(verificandoQuarta);
+    // verificando a primeira imagem
+    if (verificandoPrimeira === null) {
+        const adicionarOpacidade1 = document.querySelector('.todas-imagem-pergunta-1 .lado-esquerdo-1 .primeira-imagem-1 ');
+        console.log(adicionarOpacidade1);
+        adicionarOpacidade1.classList.add('opacidade');
+        // desativa o on click
+       adicionarOpacidade1.onclick = null;
+    } 
+    // verificando a segunda imagem
+    if (verificandoSeguda === null) {
+       const adicionarOpacidade2 = document.querySelector('.todas-imagem-pergunta-1 .lado-esquerdo-1 .segunda-imagem-1 ');
+        adicionarOpacidade2.classList.add('opacidade');
+        // desativa o on click
+        adicionarOpacidade2.onclick = null;
+    }
+    // verificando a terceira imagem
+    if (verificandoTerceira === null) {
+        const adicionarOpacidade3 = document.querySelector('.todas-imagem-pergunta-1 .lado-direito-1 .terceira-imagem-1');
+        adicionarOpacidade3.classList.add('opacidade');
+        // desativa o on click
+        adicionarOpacidade3.onclick = null;
+    }
+    // verificando a quarta imagem
+    if (verificandoQuarta === null) {
+        const adicionarOpacidade4 = document.querySelector('.todas-imagem-pergunta-1 .lado-direito-1 .quarta-imagem-1');
+        adicionarOpacidade4.classList.add('opacidade');
+        // desativa o on click
+        adicionarOpacidade4.onclick = null;
+    }
+
+}
 
 
 
@@ -82,7 +134,7 @@ function basicdata3() {
     }
     box.innerHTML += '<button onclick="page323()" class="proceed3">Prosseguir pra criar níveis</button>'
     for (i = 2; i <= numlev; i++) {
-        box2.innerHTML += '<div onclick="questions32(this)"> <div class= "questions312"> <div class="title312">Nível ' + i + '</div><ion-icon name="create-outline"></ion-icon> </div> <div class="questions31 escondido" id="1' + i + '"> <div class="setor"> <div class="title31">Nível '+i+'</div> <input type="text" class="levtitle" placeholder="Título do nível"> <input type="text" class="acertitle" placeholder="% de acerto mínima"> <input type="text" class="levimg" placeholder="URL da imagem do nível"> <input type="text" class="levdesc" placeholder="Descrição do nível"> </div> </div>';
+        box2.innerHTML += '<div onclick="questions32(this)"> <div class= "questions312"> <div class="title312">Nível ' + i + '</div><ion-icon name="create-outline"></ion-icon> </div> <div class="questions31 escondido" id="1' + i + '"> <div class="setor"> <div class="title31">Nível ' + i + '</div> <input type="text" class="levtitle" placeholder="Título do nível"> <input type="text" class="acertitle" placeholder="% de acerto mínima"> <input type="text" class="levimg" placeholder="URL da imagem do nível"> <input type="text" class="levdesc" placeholder="Descrição do nível"> </div> </div>';
     }
     box2.innerHTML += '<button onclick="page334()" class="proceed3">Finalizar Quizz</button>'
     createquizz.title = titlee;
@@ -143,7 +195,7 @@ function questions3() {
 function levels3() {
     let numlev = document.querySelector('.quizlev3').value;
     for (i = 1; i <= numlev; i++) {
-        let level = document.getElementById(i+10);
+        let level = document.getElementById(i + 10);
         let levtitlee = level.querySelector('.levtitle').value;
         let levporc = level.querySelector('.acertitle').value;
         let levimg = level.querySelector('.levimg').value;
@@ -153,7 +205,7 @@ function levels3() {
         resposta.image = levimg;
         resposta.text = levdesc;
         resposta.minValue = levporc;
-        createquizz.levels[i] =resposta;
+        createquizz.levels[i] = resposta;
     }
     console.log(createquizz);
 }
