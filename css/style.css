@@ -5,9 +5,11 @@
     display: flex;
     justify-content: center;
 }
-button:hover{
+
+button:hover {
     cursor: pointer;
 }
+
 .conteudopag1 {
     width: 340px;
     height: 100%;
@@ -174,7 +176,9 @@ button:hover{
     width: 100%;
     height: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
     margin-top: 69px;
 }
 
@@ -211,29 +215,39 @@ button:hover{
 }
 
 .banner-imagem {
-    width: 100%;
+    width: 1440px;
     height: 227px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     text-align: center;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.57), rgba(0, 0, 0, 0.57)), url();
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.57), rgba(0, 0, 0, 0.57));
+    position: relative;
+    background-color: #009C22;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.banner-imagem img {
+    width: 100%;
+    height: 100%
 }
 
 .banner-imagem p {
+    position: absolute;
+
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
     font-size: 39px;
     line-height: 46px;
     text-align: center;
-    color: #FFFFFF;
+    color: black;
 }
 
-.primeira-pergunta {
+.pergunta {
     width: 759px;
     height: 676px;
-    background: #FFFFFF;
+    background-color: #ad1b1b;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
     display: flex;
     flex-direction: column;
@@ -281,9 +295,10 @@ button:hover{
     line-height: 27px;
     text-align: center;
     color: #FFFFFF;
+   
 }
 
-.todas-imagem-pergunta-1,
+.todas-imagem-pergunta,
 .todas-imagem-pergunta-2,
 .todas-imagem-pergunta-3 {
     width: 688px;
@@ -293,7 +308,7 @@ button:hover{
     display: flex;
 }
 
-.nome-1,
+.nome,
 .nome-2,
 .nome-3 {
     font-family: 'Roboto';
@@ -307,7 +322,7 @@ button:hover{
     ;
 }
 
-.imagem-1,
+.imagem,
 .imagem-2,
 .imagem-3 {
     width: 330px;
@@ -317,7 +332,7 @@ button:hover{
     margin-bottom: 8px;
 }
 
-.imagem-1:hover,
+.imagem:hover,
 .imagem-2:hover,
 .imagem-3:hover,
 .reiniciar-quiz:hover,
@@ -325,28 +340,28 @@ button:hover{
     cursor: pointer;
 }
 
-.lado-esquerdo-1,
+.lado-esquerdo,
 .lado-esquerdo-2,
 .lado-esquerdo-3 {
     background-color: #FFFFFF;
     width: 330px;
 }
 
-.primeira-imagem-1,
+.primeira-imagem,
 .primeira-imagem-2,
 .primeira-imagem-3 {
     background-color: #FFFFFF;
     height: 217px;
 }
 
-.segunda-imagem-1,
+.segunda-imagem,
 .segunda-imagem-2,
 .segunda-imagem-3 {
     background-color: #FFFFFF;
     height: 217px;
 }
 
-.lado-direito-1,
+.lado-direito,
 .lado-direito-2,
 .lado-direito-3 {
     background-color: #FFFFFF;
@@ -354,27 +369,25 @@ button:hover{
     margin-left: 28px;
 }
 
-.terceira-imagem-1,
+.terceira-imagem,
 .terceira-imagem-2,
 .terceira-imagem-3 {
     background-color: #FFFFFF;
     height: 217px;
 }
 
-.quarta-imagem-1,
+.quarta-imagem,
 .quarta-imagem-2,
 .quarta-imagem-3 {
     background-color: #FFFFFF;
     height: 217px;
 }
 
-.opacidade{
+.opacidade {
     opacity: 0.3;
 }
 
-.selecionado{
-
-}
+.selecionado {}
 
 /*FIM DA PÁGINA 2 -1*/
 
