@@ -96,17 +96,17 @@ function deuCerto(resposta) {
                 <div class="pergunta-1" data-test="question-title" style="background-color: ${cor}">
                     <p>${resposta.data.questions[n].title}</p>
                 </div>
-                <div class="todas-imagem-pergunta todas-imagem-pergunta${[n]}">
-                    <div class="lado-esquerdo lado-esquerdo${[n]}">
-                        <div class="primeira-imagem primeira-imagem${[n]} ${resposta.data.questions[n].answers[embaralhado[0]].isCorrectAnswer}" onclick="selecionarResposta(this)" data-test="answer">
-                            <img class="imagem imagem${[n]}" src="${resposta.data.questions[n].answers[embaralhado[0]].image}" > 
-                            <p class="nome nome${[n]} data-test="answer-text" >${resposta.data.questions[n].answers[embaralhado[0]].text} </p>
+                <div class="todas-imagem-pergunta ">
+                    <div class="lado-esquerdo ">
+                        <div class="primeira-imagem naoCelecionado ${resposta.data.questions[n].answers[embaralhado[0]].isCorrectAnswer}" onclick="selecionarResposta(this)" data-test="answer">
+                            <img class="imagem " src="${resposta.data.questions[n].answers[embaralhado[0]].image}" > 
+                            <p class="nome  data-test="answer-text" >${resposta.data.questions[n].answers[embaralhado[0]].text} </p>
                         </div>
                     </div>
                     <div class="lado-direito lado-direito${[n]}">
                         <div class="terceira-imagem naoCelecionado ${resposta.data.questions[n].answers[embaralhado[1]].isCorrectAnswer}" onclick="selecionarResposta(this)" data-test="answer">
-                            <img class="imagem imagem${[n]} " src="${resposta.data.questions[n].answers[embaralhado[1]].image}" > 
-                            <p class="nome nome${[n]}" data-test="answer-text" >${resposta.data.questions[n].answers[embaralhado[1]].text}</p>
+                            <img class="imagem  " src="${resposta.data.questions[n].answers[embaralhado[1]].image}" > 
+                            <p class="nome " data-test="answer-text" >${resposta.data.questions[n].answers[embaralhado[1]].text}</p>
                         </div>
                     </div>
                 </div>
@@ -127,21 +127,21 @@ function deuCerto(resposta) {
                     <div class="pergunta-1" data-test="question-title" style="background-color: ${cor}">
                         <p>${resposta.data.questions[n].title}</p>
                     </div>
-                    <div class="todas-imagem-pergunta todas-imagem-pergunta${[n]}">
-                        <div class="lado-esquerdo lado-esquerdo${[n]}">
-                            <div class="primeira-imagem primeira-imagem${[n]} ${resposta.data.questions[n].answers[embaralhado[0]].isCorrectAnswer}" onclick="selecionarResposta(this)" data-test="answer">
-                                <img class="imagem imagem${[n]}" src="${resposta.data.questions[n].answers[embaralhado[0]].image}" > 
-                                <p class="nome nome${[n]}" data-test="answer-text" >${resposta.data.questions[n].answers[embaralhado[0]].text}</p>
+                    <div class="todas-imagem-pergunta ">
+                        <div class="lado-esquerdo ">
+                            <div class="primeira-imagem naoCelecionado ${resposta.data.questions[n].answers[embaralhado[0]].isCorrectAnswer}" onclick="selecionarResposta(this)" data-test="answer">
+                                <img class="imagem " src="${resposta.data.questions[n].answers[embaralhado[0]].image}" > 
+                                <p class="nome " data-test="answer-text" >${resposta.data.questions[n].answers[embaralhado[0]].text}</p>
                             </div>
-                            <div class="segunda-imagem segunda-imagem${[n]} ${resposta.data.questions[n].answers[embaralhado[1]].isCorrectAnswer}" onclick="selecionarResposta(this)" data-test="answer">
-                                <img class="imagem imagem${[n]}" src="${resposta.data.questions[n].answers[embaralhado[1]].image}" > 
-                                <p class="nome nome${[n]}  data-test="answer-text" >${resposta.data.questions[n].answers[embaralhado[1]].text}</p>
+                            <div class="segunda-imagem naoCelecionado ${resposta.data.questions[n].answers[embaralhado[1]].isCorrectAnswer}" onclick="selecionarResposta(this)" data-test="answer">
+                                <img class="imagem " src="${resposta.data.questions[n].answers[embaralhado[1]].image}" > 
+                                <p class="nome   data-test="answer-text" >${resposta.data.questions[n].answers[embaralhado[1]].text}</p>
                             </div>
                         </div>
-                        <div class="lado-direito lado-direito${[n]}">
-                            <div class="terceira-imagem terceira-imagem${[n]} ${resposta.data.questions[n].answers[embaralhado[2]].isCorrectAnswer}" onclick="selecionarResposta(this)" data-test="answer">
-                                <img class="imagem imagem${[n]}" src="${resposta.data.questions[n].answers[embaralhado[2]].image}" > 
-                                <p class="nome nome${[n]}" data-test="answer-text" >${resposta.data.questions[n].answers[embaralhado[2]].text}</p>
+                        <div class="lado-direito ">
+                            <div class="terceira-imagem naoCelecionado ${resposta.data.questions[n].answers[embaralhado[2]].isCorrectAnswer}" onclick="selecionarResposta(this)" data-test="answer">
+                                <img class="imagem " src="${resposta.data.questions[n].answers[embaralhado[2]].image}" > 
+                                <p class="nome " data-test="answer-text" >${resposta.data.questions[n].answers[embaralhado[2]].text}</p>
                             </div>
                         </div>
                     </div>
@@ -161,25 +161,25 @@ function deuCerto(resposta) {
                 <div class="pergunta-1" data-test="question-title" style="background-color: ${cor}">
                     <p>${resposta.data.questions[n].title}</p>
                 </div>
-                <div class="todas-imagem-pergunta todas-imagem-pergunta${[n]}" >
-                    <div class="lado-esquerdo lado-esquerdo${[n]}">
+                <div class="todas-imagem-pergunta " >
+                    <div class="lado-esquerdo ">
                         <div class="primeira-imagem naoCelecionado ${resposta.data.questions[n].answers[embaralhado[0]].isCorrectAnswer}" onclick="selecionarResposta(this)" data-test="answer">
-                            <img class="imagem imagem${[n]} " src="${resposta.data.questions[n].answers[embaralhado[0]].image}" > 
-                            <p class="nome nome${[n]}" data-test="answer-text" >${resposta.data.questions[n].answers[embaralhado[0]].text}</p>
+                            <img class="imagem " src="${resposta.data.questions[n].answers[embaralhado[0]].image}" > 
+                            <p class="nome " data-test="answer-text" >${resposta.data.questions[n].answers[embaralhado[0]].text}</p>
                         </div>
                         <div class="segunda-imagem naoCelecionado ${resposta.data.questions[n].answers[embaralhado[1]].isCorrectAnswer}" onclick="selecionarResposta(this)" data-test="answer">
-                            <img class="imagem imagem${[n]}" src="${resposta.data.questions[n].answers[embaralhado[1]].image}" > 
-                            <p class="nome nome${[n]}" data-test="answer-text" >${resposta.data.questions[n].answers[embaralhado[1]].text}</p>
+                            <img class="imagem " src="${resposta.data.questions[n].answers[embaralhado[1]].image}" > 
+                            <p class="nome " data-test="answer-text" >${resposta.data.questions[n].answers[embaralhado[1]].text}</p>
                         </div>
                     </div>
-                    <div class="lado-direito lado-direito${[n]}">
+                    <div class="lado-direito ">
                         <div class="terceira-imagem naoCelecionado ${resposta.data.questions[n].answers[embaralhado[2]].isCorrectAnswer}" onclick="selecionarResposta(this)" data-test="answer">
-                            <img class="imagem imagem${[n]} " src="${resposta.data.questions[n].answers[embaralhado[2]].image}" > 
-                            <p class="nome nome${[n]}" data-test="answer-text" >${resposta.data.questions[n].answers[embaralhado[2]].text}</p>
+                            <img class="imagem  " src="${resposta.data.questions[n].answers[embaralhado[2]].image}" > 
+                            <p class="nome " data-test="answer-text" >${resposta.data.questions[n].answers[embaralhado[2]].text}</p>
                         </div>
                         <div class="quarta-imagem naoCelecionado ${resposta.data.questions[n].answers[embaralhado[3]].isCorrectAnswer}" onclick="selecionarResposta(this)" data-test="answer">
-                            <img class="imagem imagem${[n]} " src="${resposta.data.questions[n].answers[embaralhado[3]].image}" > 
-                            <p class="nome nome${[n]}" data-test="answer-text" >${resposta.data.questions[n].answers[embaralhado[3]].text}</p>
+                            <img class="imagem  " src="${resposta.data.questions[n].answers[embaralhado[3]].image}" > 
+                            <p class="nome " data-test="answer-text" >${resposta.data.questions[n].answers[embaralhado[3]].text}</p>
                         </div>
                     </div>
                 </div>
