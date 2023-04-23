@@ -92,7 +92,7 @@ function deuCerto(resposta) {
             embaralhado.sort(function () { return 0.5 - Math.random() })
 
             limpar.innerHTML += `
-            <div class=" pergunta pergunta${[n]}" data-test="question"">
+            <div class=" pergunta pergunta${[n]}" data-test="question">
                 <div class="pergunta-1" data-test="question-title">
                     <p>${resposta.data.questions[n].title}</p>
                 </div>
