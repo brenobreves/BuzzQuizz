@@ -28,9 +28,10 @@ let embaralhado = [];
 let porcentagemDeAcerto = 0;
 let verificarSeFoiTudoRespondido = 0;
 let quantidadeDeQuestoes = 0;
-let leve;
-let quantoAcertou = 0;
+let level;
 let quantidadeDeLevel = 0;
+let contatarLevel = 0;
+let quantoAcertou = 0;
 
 
 function deuCerto(resposta) {
@@ -203,7 +204,6 @@ function selecionarResposta(respota1) {
         function mostrar() {
             let retirar = document.querySelector(`.pergunta${numerodapergunta} `);
             if (retirar !== null) {
-                console.log(porcentagemDeAcerto);
                 retirar.classList.remove('escondido');
                 window.scrollTo({
                     top: retirar.offsetTop,
@@ -255,16 +255,24 @@ function selecionarResposta(respota1) {
         numerodapergunta++;
     }
 }
-quantoAcertou = (porcentagemDeAcerto / quantidadeDeQuestoes) * 100;
-console.log(`${level[1].minValue}`);
 
 
-if (quantidadeDeQuestoes === verificarSeFoiTudoRespondido) {
-    let divDosAcertos = document.querySelector('.interacao');
+let levelDoServidor = axios.get('https://mock-api.driven.com.br/api/vm/buzzquizz/quizzes/55');
+levelDoServidor.then(caixaFinal);
 
-    for (let i = 0; i < quantidadeDeLevel; i++) {
-        if (quantoAcertou < level[i].minValue) {
-            divDosAcertos.innerHTML += ` 
+
+function caixaFinal(resposta) {
+    contatarLevel = resposta.data.levels[0].minValue;
+    console.log(contatarLevel);
+
+    if (quantidadeDeQuestoes === verificarSeFoiTudoRespondido) {
+        let divDosAcertos = document.querySelector('.interacao');
+        let quantoAcertou = (porcentagemDeAcerto / quantidadeDeQuestoes);
+        console.log(quantoAcertou);
+
+        for (let i = 0; i < quantidadeDeLevel; i++) {
+            if (quantoAcertou <= resposta.levels[i].minValue) {
+                divDosAcertos.innerHTML += ` 
     <div class=" finalizando-acerto ">
         <div class=" nivel-acerto ">
             <p> nivel de acerto 50% teste </p>
@@ -289,6 +297,7 @@ if (quantidadeDeQuestoes === verificarSeFoiTudoRespondido) {
             </div>
         </div>
     </div>`
+            }
         }
     }
 }
