@@ -9,7 +9,7 @@ function page1to3() {
     page3.classList.remove('escondido');
 }
 
-function page1to2(){
+function page1to2() {
     const page1 = document.querySelector('.pag1');
     const page2 = document.querySelector('.pagina2');
     page1.classList.add('escondido');
@@ -19,11 +19,11 @@ function page1to2(){
 const pegaTodosQuizz = axios.get("https://mock-api.driven.com.br/api/vm/buzzquizz/quizzes");
 pegaTodosQuizz.then(exibeTodosQuizz);
 
-function exibeTodosQuizz(resposta){
-    let data = resposta.data ;
+function exibeTodosQuizz(resposta) {
+    let data = resposta.data;
     let container = document.querySelector('.containertodosquizz');
     container.innerHTML = "";
-    for(let i = 0 ; i < data.length ; i++){
+    for (let i = 0; i < data.length; i++) {
         container.innerHTML += `<div class="quizz1" id="${data[i].id}" onclick="fazerQuizz(${data[i].id})">
         <img src=${data[i].image} class="quizzimg1">
         <div class="quizz1titulo">${data[i].title}</div>
@@ -35,11 +35,15 @@ function exibeTodosQuizz(resposta){
 // PAGINA 2 Quando a pessoa para selecionar a imagem da pergunta-1
 
 // obter o quizz do servidor
-function fazerQuizz(p){
-let quizDoServidor = axios.get(`https://mock-api.driven.com.br/api/vm/buzzquizz/quizzes/${p}`);
-quizDoServidor.then(deuCerto);
-console.log(quizDoServidor);
-page1to2();
+let qualQuizz;
+function fazerQuizz(p) {
+    qualQuizz = p;
+    let quizDoServidor = axios.get(`https://mock-api.driven.com.br/api/vm/buzzquizz/quizzes/${qualQuizz}`);
+
+    // let quizDoServidor = axios.get('https://mock-api.driven.com.br/api/vm/buzzquizz/quizzes/55');
+    quizDoServidor.then(deuCerto);
+    console.log(quizDoServidor);
+    page1to2();
 }
 
 
@@ -55,6 +59,7 @@ let level;
 let quantidadeDeLevel = 0;
 let contatarLevel = 0;
 let quantoAcertou = 0;
+let quantoAcertouFinal = 0;
 
 
 function deuCerto(resposta) {
@@ -66,7 +71,7 @@ function deuCerto(resposta) {
     quantidadeDeLevel = resposta.data.levels.length;
     console.log(quantidadeDeLevel);
     limpar.innerHTML += `
-            <div class="banner-imagem" >
+            <div class="banner-imagem" data-test="banner" >
                 <img src="${resposta.data.image}" alt=""> 
                 <p>${resposta.data.title}</p>
             </div>
@@ -87,21 +92,23 @@ function deuCerto(resposta) {
             embaralhado.sort(function () { return 0.5 - Math.random() })
 
             limpar.innerHTML += `
-            <div class=" pergunta pergunta${[n]}">
-                <div class="pergunta-1">
+            <div class=" pergunta pergunta${[n]}" data-test="question"">
+                <div class="pergunta-1" data-test="question-title">
                     <p>${resposta.data.questions[n].title}</p>
                 </div>
                 <div class="todas-imagem-pergunta todas-imagem-pergunta${[n]}">
                     <div class="lado-esquerdo lado-esquerdo${[n]}">
-                        <div class="primeira-imagem primeira-imagem${[n]} ${resposta.data.questions[n].answers[embaralhado[0]].isCorrectAnswer}" onclick="selecionarResposta(this)">
+                        <div class="primeira-imagem primeira-imagem${[n]} ${resposta.data.questions[n].answers[embaralhado[0]].isCorrectAnswer}" onclick="selecionarResposta(this)" data-test="answer">
                             <img class="imagem imagem${[n]}" src="${resposta.data.questions[n].answers[embaralhado[0]].image}" > 
-                            <p class="nome nome${[n]}">${resposta.data.questions[n].answers[embaralhado[0]].text}</p>
-                        </div>
-                        <div class="segunda-imagem segunda-imagem${[n]} ${resposta.data.questions[n].answers[embaralhado[1]].isCorrectAnswer}" onclick="selecionarResposta(this)">
-                            <img class="imagem imagem${[n]}" src="${resposta.data.questions[n].answers[embaralhado[1]].image}" > 
-                            <p class="nome nome${[n]}">${resposta.data.questions[n].answers[embaralhado[1]].text}</p>
+                            <p class="nome nome${[n]} data-test="answer-text"">${resposta.data.questions[n].answers[embaralhado[0]].text} </p>
                         </div>
                     </div>
+                    <div class="lado-direito lado-direito${[n]}">
+                    <div class="terceira-imagem naoCelecionado ${resposta.data.questions[n].answers[embaralhado[1]].isCorrectAnswer}" onclick="selecionarResposta(this)" data-test="answer">
+                        <img class="imagem imagem${[n]} " src="${resposta.data.questions[n].answers[embaralhado[1]].image}" > 
+                        <p class="nome nome${[n]}" data-test="answer-text">${resposta.data.questions[n].answers[embaralhado[1]].text}</p>
+                    </div>
+                </div>
                 </div>
             </div>`
             embaralhado = [];
@@ -116,25 +123,25 @@ function deuCerto(resposta) {
             embaralhado.sort(function () { return 0.5 - Math.random() })
 
             limpar.innerHTML += `
-            <div class=" pergunta pergunta${[n]}">
-                    <div class="pergunta-1">
+            <div class=" pergunta pergunta${[n]}" data-test="question"">
+                    <div class="pergunta-1" data-test="question-title">
                         <p>${resposta.data.questions[n].title}</p>
                     </div>
                     <div class="todas-imagem-pergunta todas-imagem-pergunta${[n]}">
                         <div class="lado-esquerdo lado-esquerdo${[n]}">
-                            <div class="primeira-imagem primeira-imagem${[n]} ${resposta.data.questions[n].answers[embaralhado[0]].isCorrectAnswer}" onclick="selecionarResposta(this)">
+                            <div class="primeira-imagem primeira-imagem${[n]} ${resposta.data.questions[n].answers[embaralhado[0]].isCorrectAnswer}" onclick="selecionarResposta(this)" data-test="answer">
                                 <img class="imagem imagem${[n]}" src="${resposta.data.questions[n].answers[embaralhado[0]].image}" > 
-                                <p class="nome nome${[n]}">${resposta.data.questions[n].answers[embaralhado[0]].text}</p>
+                                <p class="nome nome${[n]}" data-test="answer-text">${resposta.data.questions[n].answers[embaralhado[0]].text}</p>
                             </div>
-                            <div class="segunda-imagem segunda-imagem${[n]} ${resposta.data.questions[n].answers[embaralhado[1]].isCorrectAnswer}" onclick="selecionarResposta(this)">
+                            <div class="segunda-imagem segunda-imagem${[n]} ${resposta.data.questions[n].answers[embaralhado[1]].isCorrectAnswer}" onclick="selecionarResposta(this)" data-test="answer">
                                 <img class="imagem imagem${[n]}" src="${resposta.data.questions[n].answers[embaralhado[1]].image}" > 
-                                <p class="nome nome${[n]}">${resposta.data.questions[n].answers[embaralhado[1]].text}</p>
+                                <p class="nome nome${[n]}  data-test="answer-text">${resposta.data.questions[n].answers[embaralhado[1]].text}</p>
                             </div>
                         </div>
                         <div class="lado-direito lado-direito${[n]}">
-                            <div class="terceira-imagem terceira-imagem${[n]} ${resposta.data.questions[n].answers[embaralhado[2]].isCorrectAnswer}" onclick="selecionarResposta(this)">
+                            <div class="terceira-imagem terceira-imagem${[n]} ${resposta.data.questions[n].answers[embaralhado[2]].isCorrectAnswer}" onclick="selecionarResposta(this)" data-test="answer">
                                 <img class="imagem imagem${[n]}" src="${resposta.data.questions[n].answers[embaralhado[2]].image}" > 
-                                <p class="nome nome${[n]}">${resposta.data.questions[n].answers[embaralhado[2]].text}</p>
+                                <p class="nome nome${[n]}" data-test="answer-text">${resposta.data.questions[n].answers[embaralhado[2]].text}</p>
                             </div>
                         </div>
                     </div>
@@ -150,29 +157,29 @@ function deuCerto(resposta) {
             embaralhado.sort(function () { return 0.5 - Math.random() })
 
             limpar.innerHTML += `
-        <div class=" pergunta pergunta${[n]}">
-                <div class="pergunta-1">
+        <div class=" pergunta pergunta${[n]}" data-test="question">
+                <div class="pergunta-1" data-test="question-title">
                     <p>${resposta.data.questions[n].title}</p>
                 </div>
-                <div class="todas-imagem-pergunta todas-imagem-pergunta${[n]}">
+                <div class="todas-imagem-pergunta todas-imagem-pergunta${[n]}" >
                     <div class="lado-esquerdo lado-esquerdo${[n]}">
-                        <div class="primeira-imagem naoCelecionado ${resposta.data.questions[n].answers[embaralhado[0]].isCorrectAnswer}" onclick="selecionarResposta(this)">
+                        <div class="primeira-imagem naoCelecionado ${resposta.data.questions[n].answers[embaralhado[0]].isCorrectAnswer}" onclick="selecionarResposta(this)" data-test="answer">
                             <img class="imagem imagem${[n]} " src="${resposta.data.questions[n].answers[embaralhado[0]].image}" > 
-                            <p class="nome nome${[n]}">${resposta.data.questions[n].answers[embaralhado[0]].text}</p>
+                            <p class="nome nome${[n]}" data-test="answer-text">${resposta.data.questions[n].answers[embaralhado[0]].text}</p>
                         </div>
-                        <div class="segunda-imagem naoCelecionado ${resposta.data.questions[n].answers[embaralhado[1]].isCorrectAnswer}" onclick="selecionarResposta(this)">
+                        <div class="segunda-imagem naoCelecionado ${resposta.data.questions[n].answers[embaralhado[1]].isCorrectAnswer}" onclick="selecionarResposta(this)" data-test="answer">
                             <img class="imagem imagem${[n]}" src="${resposta.data.questions[n].answers[embaralhado[1]].image}" > 
-                            <p class="nome nome${[n]}">${resposta.data.questions[n].answers[embaralhado[1]].text}</p>
+                            <p class="nome nome${[n]}" data-test="answer-text">${resposta.data.questions[n].answers[embaralhado[1]].text}</p>
                         </div>
                     </div>
                     <div class="lado-direito lado-direito${[n]}">
-                        <div class="terceira-imagem naoCelecionado ${resposta.data.questions[n].answers[embaralhado[2]].isCorrectAnswer}" onclick="selecionarResposta(this)">
+                        <div class="terceira-imagem naoCelecionado ${resposta.data.questions[n].answers[embaralhado[2]].isCorrectAnswer}" onclick="selecionarResposta(this)" data-test="answer">
                             <img class="imagem imagem${[n]} " src="${resposta.data.questions[n].answers[embaralhado[2]].image}" > 
-                            <p class="nome nome${[n]}">${resposta.data.questions[n].answers[embaralhado[2]].text}</p>
+                            <p class="nome nome${[n]}" data-test="answer-text">${resposta.data.questions[n].answers[embaralhado[2]].text}</p>
                         </div>
-                        <div class="quarta-imagem naoCelecionado ${resposta.data.questions[n].answers[embaralhado[3]].isCorrectAnswer}" onclick="selecionarResposta(this)">
+                        <div class="quarta-imagem naoCelecionado ${resposta.data.questions[n].answers[embaralhado[3]].isCorrectAnswer}" onclick="selecionarResposta(this)" data-test="answer">
                             <img class="imagem imagem${[n]} " src="${resposta.data.questions[n].answers[embaralhado[3]].image}" > 
-                            <p class="nome nome${[n]}">${resposta.data.questions[n].answers[embaralhado[3]].text}</p>
+                            <p class="nome nome${[n]}" data-test="answer-text">${resposta.data.questions[n].answers[embaralhado[3]].text}</p>
                         </div>
                     </div>
                 </div>
@@ -204,6 +211,7 @@ function selecionarResposta(respota1) {
     // ver se o selecionado é o certo
     if (respota1.classList.contains('true')) {
         verificarSeFoiTudoRespondido++;
+
         // acertou respota
         const respostaPergunta1 = respota1.querySelector('.nome');
         respostaPergunta1.classList.add('acertou');
@@ -235,6 +243,11 @@ function selecionarResposta(respota1) {
             }
         }
         numerodapergunta++;
+        if ((quantidadeDeQuestoes === verificarSeFoiTudoRespondido) === true) {
+            mostraResultado();
+
+        }
+
 
 
     } else {
@@ -276,58 +289,59 @@ function selecionarResposta(respota1) {
             }
         }
         numerodapergunta++;
+        if (quantidadeDeQuestoes === verificarSeFoiTudoRespondido) {
+            mostraResultado();
+        }
+
     }
 }
 
+function mostraResultado() {
 
-let levelDoServidor = axios.get('https://mock-api.driven.com.br/api/vm/buzzquizz/quizzes/55');
-levelDoServidor.then(caixaFinal);
+    quantoAcertou = (porcentagemDeAcerto / quantidadeDeQuestoes) * 100;
+    quantoAcertouFinal = Math.floor(quantoAcertou);
+    console.log(quantoAcertouFinal);
+    let levelDoServido = axios.get(`https://mock-api.driven.com.br/api/vm/buzzquizz/quizzes/${qualQuizz}`);
+    //let levelDoServido = axios.get('https://mock-api.driven.com.br/api/vm/buzzquizz/quizzes/55');
+    levelDoServido.then(caixaFinal);
 
+}
 
 function caixaFinal(resposta) {
     contatarLevel = resposta.data.levels[0].minValue;
     console.log(contatarLevel);
-
-    if (quantidadeDeQuestoes === verificarSeFoiTudoRespondido) {
-        let divDosAcertos = document.querySelector('.interacao');
-        let quantoAcertou = (porcentagemDeAcerto / quantidadeDeQuestoes);
-        console.log(quantoAcertou);
-
-        for (let i = 0; i < quantidadeDeLevel; i++) {
-            if (quantoAcertou <= resposta.levels[i].minValue) {
-                divDosAcertos.innerHTML += ` 
-    <div class=" finalizando-acerto ">
-        <div class=" nivel-acerto ">
-            <p> nivel de acerto 50% teste </p>
-        </div>
-        <div class=" tudo-acerto ">
-            <div class=" lado-esquerdo-acerto ">
-                <div class=" imagem-acerto ">
-                </div>
-            </div>
-            <div class=" lado-direito-acerto ">
-                <div class=" texto-acerto ">
-                    <p> Depois de hoje!Sua vida vai continuar só que com vc um pouco mais velho.
-
-                        Afinal, a magia sempre vive no fim, para aquele que acredita nela.
-
-                        Que nesses (idade)seja mágico, como Harry Potter.
-
-                        E como diria Alvo Dumbledore: “espero que a sua cabeça esteja um pouco menos oca,
-
-                        afinal se passou mais um ano, onde vivemos que tristeza, e muitos não e erros... </p>
-                </div>
-            </div>
-        </div>
-    </div>`
-            }
+    let filtrador = 0;
+    for (let i = 0; i < quantidadeDeLevel; i++) {
+        if (quantoAcertouFinal >= resposta.data.levels[i].minValue && filtrador === 0) {
+            let divDosAcertos = document.querySelector('.interacao');
+            alert('ate aqui');
+            divDosAcertos.innerHTML += ` 
+           <div class=" finalizando-acerto ">
+               <div class=" nivel-acerto " data-test="level-title">
+                   <p> ${quantoAcertouFinal}% de acerto: ${resposta.data.levels[i].title} </p>
+               </div>
+               <div class=" tudo-acerto ">
+                   <div class=" lado-esquerdo-acerto ">
+                       <div class=" imagem-acerto " data-test="level-img">
+                        <img class="imagem-acerto" src="${resposta.data.levels[i].image}" > 
+                       </div>
+                   </div>
+                   <div class=" lado-direito-acerto ">
+                       <div class=" texto-acerto " data-test="level-text">
+                           <p> ${resposta.data.levels[i].text} </p>
+                       </div>
+                   </div>
+               </div>
+           </div>`
+            filtrador++;
         }
     }
 }
 
 function reiniciar() {
-    let quizDoServidor = axios.get('https://mock-api.driven.com.br/api/vm/buzzquizz/quizzes/55');
-    quizDoServidor.then(deuCerto);
+    let quizDoServidore = axios.get(`https://mock-api.driven.com.br/api/vm/buzzquizz/quizzes/${qualQuizz}`);
+    // let quizDoServidore = axios.get('https://mock-api.driven.com.br/api/vm/buzzquizz/quizzes/55');
+    quizDoServidore.then(deuCerto);
     numerodapergunta = 0;
 }
 
