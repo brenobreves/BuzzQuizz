@@ -9,18 +9,41 @@ function page1to3() {
     page3.classList.remove('escondido');
 }
 
+function page1to2(){
+    const page1 = document.querySelector('.pag1');
+    const page2 = document.querySelector('.pagina2');
+    page1.classList.add('escondido');
+    page2.classList.remove('escondido');
+}
+
+const pegaTodosQuizz = axios.get("https://mock-api.driven.com.br/api/vm/buzzquizz/quizzes");
+pegaTodosQuizz.then(exibeTodosQuizz);
+
+function exibeTodosQuizz(resposta){
+    let data = resposta.data ;
+    let container = document.querySelector('.containertodosquizz');
+    container.innerHTML = "";
+    for(let i = 0 ; i < data.length ; i++){
+        container.innerHTML += `<div class="quizz1" id="${data[i].id}" onclick="fazerQuizz(${data[i].id})">
+        <img src=${data[i].image} class="quizzimg1">
+        <div class="quizz1titulo">${data[i].title}</div>
+    </div>`
+    }
+}
 ////// PAGE 1 FIM ////
 
 // PAGINA 2 Quando a pessoa para selecionar a imagem da pergunta-1
 
 // obter o quizz do servidor
-
-let quizDoServidor = axios.get('https://mock-api.driven.com.br/api/vm/buzzquizz/quizzes/55');
-console.log(quizDoServidor);
-
-
-
+function fazerQuizz(p){
+let quizDoServidor = axios.get(`https://mock-api.driven.com.br/api/vm/buzzquizz/quizzes/${p}`);
 quizDoServidor.then(deuCerto);
+console.log(quizDoServidor);
+page1to2();
+}
+
+
+
 //quizDoServidor.catch(naoDeuCerto);
 let opacidade;
 let numerodapergunta = 0;
