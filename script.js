@@ -24,7 +24,7 @@ function exibeTodosQuizz(resposta) {
     let container = document.querySelector('.containertodosquizz');
     container.innerHTML = "";
     for (let i = 0; i < data.length; i++) {
-        container.innerHTML += `<div class="quizz1" id="${data[i].id}" onclick="fazerQuizz(${data[i].id})">
+        container.innerHTML += `<div class="quizz1" id="${data[i].id}" onclick="fazerQuizz(${data[i].id})" data-test="my-quiz">
         <img src=${data[i].image} class="quizzimg1">
         <div class="quizz1titulo">${data[i].title}</div>
     </div>`
@@ -419,7 +419,7 @@ function basicdata3() {
     let box = document.querySelector('.box31');
     let box2 = document.querySelector('.box32')
     for (i = 2; i <= numques; i++) {
-        box.innerHTML += '<div onclick="questions32(this)"> <div class="questions312"> <div class="title312">Pergunta ' + i + '</div><ion-icon name="create-outline"></ion-icon> </div> <div class="questions31 escondido" id="' + i + '"> <div class="setor"> <div class="title31">Pergunta ' + i + '</div> <input type="text" class="qtitle" placeholder="Texto da pergunta"> <input type="text" class="qcolor" placeholder="Cor de fundo da pergunta"> </div> <div class="setor right"> <div class="title31">Resposta correta</div> <input type="text" class="qansw3" placeholder="Resposta correta"> <input type="text" class="qimg3" placeholder="URL da imagem"> </div> <div class="setor wrong1"> <div class="title31">Respostas incorretas</div> <input type="text" class="qansw3" placeholder="Resposta incorreta 1"> <input type="text" class="qimg3" placeholder="URL da imagem 1"> </div> <div class="setor wrong2"> <input type="text" class="qansw3" placeholder="Resposta incorreta 2"> <input type="text" class="qimg3" placeholder="URL da imagem 2"> </div> <div class="setor wrong3"> <input type="text" class="qansw3" placeholder="Resposta incorreta 3"> <input type="text" class="qimg3" placeholder="URL da imagem 3"> </div> </div>'
+        box.innerHTML += '<div onclick="questions32(this)"  data-test="level-ctn" > <div class="questions312"> <div class="title312">Pergunta ' + i + '</div><ion-icon name="create-outline"></ion-icon> </div> <div class="questions31 escondido" id="' + i + '"> <div class="setor"> <div class="title31">Pergunta ' + i + '</div> <input type="text" class="qtitle" placeholder="Texto da pergunta"> <input type="text" class="qcolor" placeholder="Cor de fundo da pergunta"> </div> <div class="setor right"> <div class="title31">Resposta correta</div> <input type="text" class="qansw3" placeholder="Resposta correta"> <input type="text" class="qimg3" placeholder="URL da imagem"> </div> <div class="setor wrong1"> <div class="title31">Respostas incorretas</div> <input type="text" class="qansw3" placeholder="Resposta incorreta 1"> <input type="text" class="qimg3" placeholder="URL da imagem 1"> </div> <div class="setor wrong2"> <input type="text" class="qansw3" placeholder="Resposta incorreta 2"> <input type="text" class="qimg3" placeholder="URL da imagem 2"> </div> <div class="setor wrong3"> <input type="text" class="qansw3" placeholder="Resposta incorreta 3"> <input type="text" class="qimg3" placeholder="URL da imagem 3"> </div> </div>'
     }
     box.innerHTML += '<button onclick="page323()" class="proceed3">Prosseguir pra criar níveis</button>'
     for (i = 2; i <= numlev; i++) {

@@ -24,7 +24,7 @@
         <div class="conteudopag1">
             <div class="semquizz1">
                 <div class="textsemquizz1">Você não criou nenhum quizz ainda :(</div>
-                <button onclick="page1to3()" class="criarprimeiroquizz1">Criar Quizz</button>
+                <button onclick="page1to3()" class="criarprimeiroquizz1" data-test="create-btn" >Criar Quizz</button>
             </div>
             <!-- PAGINA 1 PARTE 1 com quizz-->
             <div class="seusquizzes1 escondido">
@@ -34,7 +34,7 @@
                             name="add-circle"></ion-icon></button>
                 </div>
                 <div class="containerseuquizz1">
-                    <div class="quizz1">
+                    <div class="quizz1" data-test="my-quiz">
                         <img src="./imagens teste/Rectangle 42.png" class="quizzimg1">
                         <div class="quizz1titulo">O quão Potterhead é você?</div>
                     </div>
@@ -117,12 +117,12 @@
             <div class="box3">
                 <div class="title3">Comece pelo começo</div>
                 <div class="questions3">
-                    <input class="quiztitle3" type="text" placeholder="Título do seu quizz">
-                    <input class="quizimgurl3" type="text" placeholder="URL da imagem do seu quizz">
-                    <input class="quiznump3" type="text" placeholder="Quantidade de perguntas do quizz">
-                    <input class="quizlev3" type="text" placeholder="Quantidade de níveis do quizz">
+                    <input class="quiztitle3" type="text" placeholder="Título do seu quizz" data-test="title-input">
+                    <input class="quizimgurl3" type="text" placeholder="URL da imagem do seu quizz"  data-test="img-input">
+                    <input class="quiznump3" type="text" placeholder="Quantidade de perguntas do quizz" data-test="questions-amount-input">
+                    <input class="quizlev3" type="text" placeholder="Quantidade de níveis do quizz" data-test="levels-amount-input">
                 </div>
-                <button onclick="page312()" class="proceed3">Prosseguir pra criar perguntas</button>
+                <button onclick="page312()" class="proceed3" data-test="go-create-questions" >Prosseguir pra criar perguntas</button>
             </div>
         </div>
     </div>
@@ -140,29 +140,29 @@
         <div class="body3">
             <div class="box31">
                 <div class="title3">Crie suas perguntas</div>
-                <div class="questions31" id="1">
+                <div class="questions31" id="1"  data-test="level-ctn">
                     <div class="setor">
-                        <div class="title31">Pergunta 1</div>
-                        <input type="text" class="qtitle" placeholder="Texto da pergunta">
-                        <input type="text" class="qcolor" placeholder="Cor de fundo da pergunta">
+                        <div class="title31"  >Pergunta 1</div>
+                        <input type="text" class="qtitle" placeholder="Texto da pergunta" data-test="question-input" >
+                        <input type="text" class="qcolor" placeholder="Cor de fundo da pergunta" data-test="question-color-input">
                     </div>
                     <div class="setor right">
                         <div class="title31">Resposta correta</div>
-                        <input type="text" class="qansw3" placeholder="Resposta correta">
-                        <input type="text" class="qimg3" placeholder="URL da imagem">
+                        <input type="text" class="qansw3" placeholder="Resposta correta" data-test="correct-answer-input" >
+                        <input type="text" class="qimg3" placeholder="URL da imagem" data-test="correct-img-input">
                     </div>
                     <div class="setor wrong1">
                         <div class="title31">Respostas incorretas</div>
-                        <input type="text" class="qansw3" placeholder="Resposta incorreta 1">
-                        <input type="text" class="qimg3" placeholder="URL da imagem 1">
+                        <input type="text" class="qansw3" placeholder="Resposta incorreta 1" data-test="wrong-answer-input">
+                        <input type="text" class="qimg3" placeholder="URL da imagem 1" data-test="wrong-img-input">
                     </div>
                     <div class="setor wrong2">
-                        <input type="text" class="qansw3" placeholder="Resposta incorreta 2">
-                        <input type="text" class="qimg3" placeholder="URL da imagem 2">
+                        <input type="text" class="qansw3" placeholder="Resposta incorreta 2"  data-test="wrong-answer-input">
+                        <input type="text" class="qimg3" placeholder="URL da imagem 2" data-test="wrong-img-input">
                     </div>
                     <div class="setor wrong3">
-                        <input type="text" class="qansw3" placeholder="Resposta incorreta 3">
-                        <input type="text" class="qimg3" placeholder="URL da imagem 3">
+                        <input type="text" class="qansw3" placeholder="Resposta incorreta 3"  data-test="wrong-answer-input">
+                        <input type="text" class="qimg3" placeholder="URL da imagem 3" data-test="wrong-img-input">
                     </div>
                 </div>
 
@@ -209,8 +209,8 @@
                     </div>
                     <div class="imgtitle33"> Titulo do quizz aqui </div>
                 </div>
-                <button class="proceed3">Acessar Quizz</button>
-                <button onclick="home()" class="home">Voltar pra home</button>
+                <button class="proceed3" data-test="go-quiz" >Acessar Quizz</button>
+                <button onclick="home()" class="home" data-test="go-home" >Voltar pra home</button>
             </div>
         </div>
     </div>
