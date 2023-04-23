@@ -189,17 +189,6 @@ function deuCerto(resposta) {
     }
 
 
-    for (let i = 0; i < resposta.data.questions.length; i++) {
-        let escondendo = document.querySelector('.pergunta' + i);
-        let escondendoClass = escondendo.classList[1];
-
-        if (escondendoClass === 'pergunta0') {
-
-        } else {
-            escondendo.classList.add('escondido');
-        }
-
-    }
 }
 
 
