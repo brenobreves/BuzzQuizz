@@ -24,7 +24,7 @@ function exibeTodosQuizz(resposta) {
     let container = document.querySelector('.containertodosquizz');
     container.innerHTML = "";
     for (let i = 0; i < data.length; i++) {
-        container.innerHTML += `<div class="quizz1" id="${data[i].id}" onclick="fazerQuizz(${data[i].id})" data-test="my-quiz">
+        container.innerHTML += `<div class="quizz1" id="${data[i].id}" onclick="fazerQuizz(${data[i].id})" data-test="others-quiz"">
         <img src=${data[i].image} class="quizzimg1">
         <div class="quizz1titulo">${data[i].title}</div>
     </div>`
