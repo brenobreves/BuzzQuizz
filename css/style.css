@@ -218,23 +218,28 @@ button:hover {
     width: 1440px;
     height: 227px;
     text-align: center;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.57), rgba(0, 0, 0, 0.57));
     position: relative;
-    background-color: #009C22;
+    background-color: rgba(0, 0, 0, 0.6);
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+
+
 }
 
 
 .banner-imagem img {
     width: 100%;
-    height: 100%
+    height: 100%;
+    background: rgb(230, 230, 230);
+    background: radial-gradient(circle, rgba(230, 230, 230, 0.006039915966386533) 0%, rgba(0, 0, 0, 1) 100%);
+    position: absolute;
+
 }
 
 .banner-imagem p {
     position: absolute;
-
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
@@ -247,7 +252,7 @@ button:hover {
 .pergunta {
     width: 759px;
     height: 676px;
-    background-color: #ad1b1b;
+    background-color: #FFFFFF;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
     display: flex;
     flex-direction: column;
@@ -257,23 +262,9 @@ button:hover {
     margin-bottom: 42px;
 }
 
-.segunda-pergunta,
-.terceira-pergunta {
-    width: 759px;
-    height: 676px;
-    left: 340px;
-    background: #FFFFFF;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 42px;
-}
 
-.pergunta-1,
-.pergunta-2,
-.pergunta-3 {
+
+.pergunta-1 {
     width: 688px;
     height: 138px;
     background-color: #434CA0;
@@ -284,9 +275,7 @@ button:hover {
 
 }
 
-.pergunta-1 p,
-.pergunta-2 p,
-.pergunta-3 p {
+.pergunta-1 p {
     width: 623px;
     font-family: 'Roboto';
     font-style: normal;
@@ -295,12 +284,10 @@ button:hover {
     line-height: 27px;
     text-align: center;
     color: #FFFFFF;
-   
+
 }
 
-.todas-imagem-pergunta,
-.todas-imagem-pergunta-2,
-.todas-imagem-pergunta-3 {
+.todas-imagem-pergunta {
     width: 688px;
     height: 453px;
     background-color: #FFFFFF;
@@ -308,9 +295,7 @@ button:hover {
     display: flex;
 }
 
-.nome,
-.nome-2,
-.nome-3 {
+.nome {
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 700;
@@ -322,9 +307,7 @@ button:hover {
     ;
 }
 
-.imagem,
-.imagem-2,
-.imagem-3 {
+.imagem {
     width: 330px;
     height: 175px;
     border-radius: 0px;
@@ -333,52 +316,38 @@ button:hover {
 }
 
 .imagem:hover,
-.imagem-2:hover,
-.imagem-3:hover,
 .reiniciar-quiz:hover,
 .voltar-pro-home:hover {
     cursor: pointer;
 }
 
-.lado-esquerdo,
-.lado-esquerdo-2,
-.lado-esquerdo-3 {
+.lado-esquerdo {
     background-color: #FFFFFF;
     width: 330px;
 }
 
-.primeira-imagem,
-.primeira-imagem-2,
-.primeira-imagem-3 {
+.primeira-imagem {
     background-color: #FFFFFF;
     height: 217px;
 }
 
-.segunda-imagem,
-.segunda-imagem-2,
-.segunda-imagem-3 {
+.segunda-imagem {
     background-color: #FFFFFF;
     height: 217px;
 }
 
-.lado-direito,
-.lado-direito-2,
-.lado-direito-3 {
+.lado-direito {
     background-color: #FFFFFF;
     width: 330px;
     margin-left: 28px;
 }
 
-.terceira-imagem,
-.terceira-imagem-2,
-.terceira-imagem-3 {
+.terceira-imagem {
     background-color: #FFFFFF;
     height: 217px;
 }
 
-.quarta-imagem,
-.quarta-imagem-2,
-.quarta-imagem-3 {
+.quarta-imagem{
     background-color: #FFFFFF;
     height: 217px;
 }
@@ -386,8 +355,6 @@ button:hover {
 .opacidade {
     opacity: 0.3;
 }
-
-.selecionado {}
 
 /*FIM DA PÁGINA 2 -1*/
 

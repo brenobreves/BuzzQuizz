@@ -16,18 +16,31 @@ function page1to3() {
 // obter o quizz do servidor
 
 let quizDoServidor = axios.get('https://mock-api.driven.com.br/api/vm/buzzquizz/quizzes/55');
-//console.log(quizDoServidor.data.length);
+console.log(quizDoServidor);
+
+
+
 quizDoServidor.then(deuCerto);
 //quizDoServidor.catch(naoDeuCerto);
 let opacidade;
-let verificar;
+let numerodapergunta = 0;
+let embaralhado = [];
+let porcentagemDeAcerto = 0;
+let verificarSeFoiTudoRespondido = 0;
+let quantidadeDeQuestoes = 0;
+let leve;
+let quantoAcertou = 0;
+let quantidadeDeLevel = 0;
+
 
 function deuCerto(resposta) {
-    opacidade = resposta.data.questions;
-    console.log(opacidade);
     let limpar = document.querySelector('.interacao');
     limpar.innerHTML = '';
-
+    quantidadeDeQuestoes = resposta.data.questions.length;
+    level = resposta.data.levels;
+    console.log(level);
+    quantidadeDeLevel = resposta.data.levels.length;
+    console.log(quantidadeDeLevel);
     limpar.innerHTML += `
             <div class="banner-imagem" >
                 <img src="${resposta.data.image}" alt=""> 
@@ -36,149 +49,257 @@ function deuCerto(resposta) {
             
     `
 
-    for (let n = 0; n < resposta.data.questions.length; n++) {
+    for (let n = 0; n < quantidadeDeQuestoes; n++) {
 
         // eu vou ver o answers.length e vou fazer um teste
         let quantasImagens = resposta.data.questions[n].answers.length;
-        console.log(quantasImagens);
 
-         // se answers.length for = 2 so primeira e segunda
-        if(quantasImagens === 2 ){
+        // se answers.length for = 2 so primeira e segunda
+        if (quantasImagens === 2) {
+            for (let i = 0; i < quantasImagens; i++) {
+                embaralhado.push(i)
+
+            }
+            embaralhado.sort(function () { return 0.5 - Math.random() })
+
             limpar.innerHTML += `
-        <div class=" pergunta pergunta${[n]}">
+            <div class=" pergunta pergunta${[n]}">
                 <div class="pergunta-1">
                     <p>${resposta.data.questions[n].title}</p>
                 </div>
-                <div class="todas-imagem-pergunta">
-                    <div class="lado-esquerdo">
-                        <div class="primeira-imagem " onclick="selecionarResposta(this)">
-                            <img class="imagem" src="${resposta.data.questions[n].answers[0].image}" > 
-                            <p class="nome ">${resposta.data.questions[n].answers[0].text}</p>
+                <div class="todas-imagem-pergunta todas-imagem-pergunta${[n]}">
+                    <div class="lado-esquerdo lado-esquerdo${[n]}">
+                        <div class="primeira-imagem primeira-imagem${[n]} ${resposta.data.questions[n].answers[embaralhado[0]].isCorrectAnswer}" onclick="selecionarResposta(this)">
+                            <img class="imagem imagem${[n]}" src="${resposta.data.questions[n].answers[embaralhado[0]].image}" > 
+                            <p class="nome nome${[n]}">${resposta.data.questions[n].answers[embaralhado[0]].text}</p>
                         </div>
-                        <div class="segunda-imagem" onclick="selecionarResposta(this)">
-                            <img class="imagem" src="${resposta.data.questions[n].answers[1].image}" > 
-                            <p class="nome ">${resposta.data.questions[n].answers[1].text}</p>
+                        <div class="segunda-imagem segunda-imagem${[n]} ${resposta.data.questions[n].answers[embaralhado[1]].isCorrectAnswer}" onclick="selecionarResposta(this)">
+                            <img class="imagem imagem${[n]}" src="${resposta.data.questions[n].answers[embaralhado[1]].image}" > 
+                            <p class="nome nome${[n]}">${resposta.data.questions[n].answers[embaralhado[1]].text}</p>
                         </div>
                     </div>
                 </div>
             </div>`
+            embaralhado = [];
 
-         // se answers.length  for = 3 so 1 segunda segunda e terceira
-        } else if(quantasImagens === 3){
+            // se answers.length  for = 3 so 1 segunda segunda e terceira
+        } else if (quantasImagens === 3) {
+
+            for (let i = 0; i < quantasImagens; i++) {
+                embaralhado.push(i)
+
+            }
+            embaralhado.sort(function () { return 0.5 - Math.random() })
+
             limpar.innerHTML += `
             <div class=" pergunta pergunta${[n]}">
                     <div class="pergunta-1">
                         <p>${resposta.data.questions[n].title}</p>
                     </div>
-                    <div class="todas-imagem-pergunta">
-                        <div class="lado-esquerdo">
-                            <div class="primeira-imagem " onclick="selecionarResposta(this)">
-                                <img class="imagem" src="${resposta.data.questions[n].answers[0].image}" > 
-                                <p class="nome ">${resposta.data.questions[n].answers[0].text}</p>
+                    <div class="todas-imagem-pergunta todas-imagem-pergunta${[n]}">
+                        <div class="lado-esquerdo lado-esquerdo${[n]}">
+                            <div class="primeira-imagem primeira-imagem${[n]} ${resposta.data.questions[n].answers[embaralhado[0]].isCorrectAnswer}" onclick="selecionarResposta(this)">
+                                <img class="imagem imagem${[n]}" src="${resposta.data.questions[n].answers[embaralhado[0]].image}" > 
+                                <p class="nome nome${[n]}">${resposta.data.questions[n].answers[embaralhado[0]].text}</p>
                             </div>
-                            <div class="segunda-imagem" onclick="selecionarResposta(this)">
-                                <img class="imagem" src="${resposta.data.questions[n].answers[1].image}" > 
-                                <p class="nome ">${resposta.data.questions[n].answers[1].text}</p>
+                            <div class="segunda-imagem segunda-imagem${[n]} ${resposta.data.questions[n].answers[embaralhado[1]].isCorrectAnswer}" onclick="selecionarResposta(this)">
+                                <img class="imagem imagem${[n]}" src="${resposta.data.questions[n].answers[embaralhado[1]].image}" > 
+                                <p class="nome nome${[n]}">${resposta.data.questions[n].answers[embaralhado[1]].text}</p>
                             </div>
                         </div>
-                        <div class="lado-direito">
-                            <div class="terceira-imagem" onclick="selecionarResposta(this)">
-                                <img class="imagem" src="${resposta.data.questions[n].answers[2].image}" > 
-                                <p class="nome ">${resposta.data.questions[n].answers[2].text}</p>
+                        <div class="lado-direito lado-direito${[n]}">
+                            <div class="terceira-imagem terceira-imagem${[n]} ${resposta.data.questions[n].answers[embaralhado[2]].isCorrectAnswer}" onclick="selecionarResposta(this)">
+                                <img class="imagem imagem${[n]}" src="${resposta.data.questions[n].answers[embaralhado[2]].image}" > 
+                                <p class="nome nome${[n]}">${resposta.data.questions[n].answers[embaralhado[2]].text}</p>
                             </div>
                         </div>
                     </div>
-            </div>
-                            `
-        } else if(quantasImagens === 4){
-       
-        limpar.innerHTML += `
+            </div> `
+            embaralhado = [];
+
+        } else if (quantasImagens === 4) {
+
+            for (let i = 0; i < quantasImagens; i++) {
+                embaralhado.push(i)
+
+            }
+            embaralhado.sort(function () { return 0.5 - Math.random() })
+
+            limpar.innerHTML += `
         <div class=" pergunta pergunta${[n]}">
                 <div class="pergunta-1">
                     <p>${resposta.data.questions[n].title}</p>
                 </div>
-                <div class="todas-imagem-pergunta">
-                    <div class="lado-esquerdo">
-                        <div class="primeira-imagem " onclick="selecionarResposta(this)">
-                            <img class="imagem" src="${resposta.data.questions[n].answers[0].image}" > 
-                            <p class="nome ">${resposta.data.questions[n].answers[0].text}</p>
+                <div class="todas-imagem-pergunta todas-imagem-pergunta${[n]}">
+                    <div class="lado-esquerdo lado-esquerdo${[n]}">
+                        <div class="primeira-imagem naoCelecionado ${resposta.data.questions[n].answers[embaralhado[0]].isCorrectAnswer}" onclick="selecionarResposta(this)">
+                            <img class="imagem imagem${[n]} " src="${resposta.data.questions[n].answers[embaralhado[0]].image}" > 
+                            <p class="nome nome${[n]}">${resposta.data.questions[n].answers[embaralhado[0]].text}</p>
                         </div>
-                        <div class="segunda-imagem" onclick="selecionarResposta(this)">
-                            <img class="imagem" src="${resposta.data.questions[n].answers[1].image}" > 
-                            <p class="nome ">${resposta.data.questions[n].answers[1].text}</p>
+                        <div class="segunda-imagem naoCelecionado ${resposta.data.questions[n].answers[embaralhado[1]].isCorrectAnswer}" onclick="selecionarResposta(this)">
+                            <img class="imagem imagem${[n]}" src="${resposta.data.questions[n].answers[embaralhado[1]].image}" > 
+                            <p class="nome nome${[n]}">${resposta.data.questions[n].answers[embaralhado[1]].text}</p>
                         </div>
                     </div>
-                    <div class="lado-direito">
-                        <div class="terceira-imagem" onclick="selecionarResposta(this)">
-                            <img class="imagem" src="${resposta.data.questions[n].answers[2].image}" > 
-                            <p class="nome ">${resposta.data.questions[n].answers[2].text}</p>
+                    <div class="lado-direito lado-direito${[n]}">
+                        <div class="terceira-imagem naoCelecionado ${resposta.data.questions[n].answers[embaralhado[2]].isCorrectAnswer}" onclick="selecionarResposta(this)">
+                            <img class="imagem imagem${[n]} " src="${resposta.data.questions[n].answers[embaralhado[2]].image}" > 
+                            <p class="nome nome${[n]}">${resposta.data.questions[n].answers[embaralhado[2]].text}</p>
                         </div>
-                        <div class="quarta-imagem" onclick="selecionarResposta(this)">
-                            <img class="imagem" src="${resposta.data.questions[n].answers[3].image}" > 
-                            <p class="nome ">${resposta.data.questions[n].answers[3].text}</p>
+                        <div class="quarta-imagem naoCelecionado ${resposta.data.questions[n].answers[embaralhado[3]].isCorrectAnswer}" onclick="selecionarResposta(this)">
+                            <img class="imagem imagem${[n]} " src="${resposta.data.questions[n].answers[embaralhado[3]].image}" > 
+                            <p class="nome nome${[n]}">${resposta.data.questions[n].answers[embaralhado[3]].text}</p>
                         </div>
                     </div>
                 </div>
         </div>`
+            embaralhado = [];
+        }
+    }
+
+
+    for (let i = 0; i < resposta.data.questions.length; i++) {
+        let escondendo = document.querySelector('.pergunta' + i);
+        let escondendoClass = escondendo.classList[1];
+
+        if (escondendoClass === 'pergunta0') {
+
+        } else {
+            escondendo.classList.add('escondido');
+        }
+
     }
 }
-}
+
 
 
 
 function selecionarResposta(respota1) {
 
-    debugger;
-    // quando a pessoa clicar na imagem desejada ele faz adicionar certo ou errado
-    // colocar a cor certa no nome da imagem
-        const selecionadoPeloUsuario = respota1.querySelector('.imagem');
-        selecionadoPeloUsuario.classList.add('selecionado');
+    const respostaCerta = respota1.querySelector
+    // ver se o selecionado é o certo
+    if (respota1.classList.contains('true')) {
+        verificarSeFoiTudoRespondido++;
+        // acertou respota
         const respostaPergunta1 = respota1.querySelector('.nome');
         respostaPergunta1.classList.add('acertou');
         respota1.onclick = null
-        // vai procurar se tem a classe selecionada
-        // debugger;
-        const verificarQualPergunta1 = document.querySelector('.pergunta');
-        console.log(verificarQualPergunta1);
+        const selecionadoPeloUsuario = respota1.querySelector('.imagem');
+        respota1.classList.remove('naoCelecionado');
+        const ver = document.querySelectorAll(`.pergunta${numerodapergunta} .naoCelecionado`);
+        porcentagemDeAcerto++;
+        // const certo = ver.querySelector('true');
+        console.log(ver);
+
+        for (let i = 0; i < ver.length; i++) {
+            ver[i].classList.add('opacidade');
+            let errou = ver[i].querySelector('.nome');
+            console.log(errou);
+            errou.classList.add('errou');
+            ver[i].onclick = null;
+
+        }
+        setTimeout(mostrar, 2000);
+        function mostrar() {
+            let retirar = document.querySelector(`.pergunta${numerodapergunta} `);
+            if (retirar !== null) {
+                console.log(porcentagemDeAcerto);
+                retirar.classList.remove('escondido');
+                window.scrollTo({
+                    top: retirar.offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+        }
+        numerodapergunta++;
 
 
-        const verificandoPrimeira = document.querySelector('.primeira-imagem .selecionado');
-        const verificandoSeguda = document.querySelector(' .segunda-imagem .selecionado');
-        const verificandoTerceira = document.querySelector(' .terceira-imagem .selecionado');
-        const verificandoQuarta = document.querySelector('.quarta-imagem .selecionado');
+    } else {
+        verificarSeFoiTudoRespondido++;
+        //errou a resposta
+        const certo = document.querySelector(`.pergunta${numerodapergunta} .true .nome`);
+        console.log(certo);
+        certo.classList.add('acertou');
 
-        // verificando a primeira imagem
-        if (verificandoPrimeira === null) {
-            const adicionarOpacidade1 = document.querySelector('.primeira-imagem');
-            console.log(adicionarOpacidade1);
-            adicionarOpacidade1.classList.add('opacidade');
-            // desativa o on click
-            adicionarOpacidade1.onclick = null;
+        const certo1 = document.querySelector(`.pergunta${numerodapergunta} .true `)
+        certo1.classList.remove('naoCelecionado');
+        certo1.classList.add('opacidade');
+        const respostaPergunta1 = respota1.querySelector('.nome');
+        respostaPergunta1.classList.add('errou');
+        respota1.onclick = null
+        respota1.classList.remove('naoCelecionado');
+        const selecionadoPeloUsuario = respota1.querySelector('.imagem');
+        const ver = document.querySelectorAll(`.pergunta${numerodapergunta} .naoCelecionado`);
+        console.log(ver);
+
+        for (let i = 0; i < ver.length; i++) {
+            ver[i].classList.add('opacidade');
+            let errou = ver[i].querySelector('.nome');
+            errou.classList.add('errou');
+            ver[i].onclick = null;
+
         }
-        // verificando a segunda imagem
-        if (verificandoSeguda === null) {
-            const adicionarOpacidade2 = document.querySelector('.segunda-imagem ');
-            adicionarOpacidade2.classList.add('opacidade');
-            // desativa o on click
-            adicionarOpacidade2.onclick = null;
+        setTimeout(mostrar, 2000);
+        function mostrar() {
+            let retirar = document.querySelector(`.pergunta${numerodapergunta} `);
+            if (retirar !== null) {
+
+                retirar.classList.remove('escondido');
+                window.scrollTo({
+                    top: retirar.offsetTop,
+                    behavior: 'smooth'
+
+                });
+            }
         }
-        // verificando a terceira imagem
-        if (verificandoTerceira === null) {
-            const adicionarOpacidade3 = document.querySelector('.terceira-imagem');
-            adicionarOpacidade3.classList.add('opacidade');
-            // desativa o on click
-            adicionarOpacidade3.onclick = null;
-        }
-        // verificando a quarta imagem
-        if (verificandoQuarta === null) {
-            const adicionarOpacidade4 = document.querySelector('.quarta-imagem');
-            adicionarOpacidade4.classList.add('opacidade');
-            // desativa o on click
-            adicionarOpacidade4.onclick = null;
+        numerodapergunta++;
+    }
+}
+quantoAcertou = (porcentagemDeAcerto / quantidadeDeQuestoes) * 100;
+console.log(`${level[1].minValue}`);
+
+
+if (quantidadeDeQuestoes === verificarSeFoiTudoRespondido) {
+    let divDosAcertos = document.querySelector('.interacao');
+
+    for (let i = 0; i < quantidadeDeLevel; i++) {
+        if (quantoAcertou < level[i].minValue) {
+            divDosAcertos.innerHTML += ` 
+    <div class=" finalizando-acerto ">
+        <div class=" nivel-acerto ">
+            <p> nivel de acerto 50% teste </p>
+        </div>
+        <div class=" tudo-acerto ">
+            <div class=" lado-esquerdo-acerto ">
+                <div class=" imagem-acerto ">
+                </div>
+            </div>
+            <div class=" lado-direito-acerto ">
+                <div class=" texto-acerto ">
+                    <p> Depois de hoje!Sua vida vai continuar só que com vc um pouco mais velho.
+
+                        Afinal, a magia sempre vive no fim, para aquele que acredita nela.
+
+                        Que nesses (idade)seja mágico, como Harry Potter.
+
+                        E como diria Alvo Dumbledore: “espero que a sua cabeça esteja um pouco menos oca,
+
+                        afinal se passou mais um ano, onde vivemos que tristeza, e muitos não e erros... </p>
+                </div>
+            </div>
+        </div>
+    </div>`
         }
     }
+}
 
-function voltarHome(){
+function reiniciar() {
+    let quizDoServidor = axios.get('https://mock-api.driven.com.br/api/vm/buzzquizz/quizzes/55');
+    quizDoServidor.then(deuCerto);
+    numerodapergunta = 0;
+}
+
+function voltarHome() {
     const verSeTemEsconcido = document.querySelector('.pagina2');
     verSeTemEsconcido.classList.add('escondido');
     const pagina21 = document.querySelector('.pag1');
