@@ -6,8 +6,6 @@ let createquizz = {
     levels: []
 };
 const meusquizzes = [];
-createquizz.questions = [];
-createquizz.levels = [];
 //////////////////////
 ////// TOKEN //////
 axios.defaults.headers.common['Authorization'] = '9maaDDkKFQ1saSPY3udlpWmT';
@@ -396,9 +394,8 @@ function troc() {
 ///PAGE 3 Sair da página de Níveis e finalizar o quizz///
 function qpronto() {
     let promisse = axios.post('https://mock-api.driven.com.br/api/vm/buzzquizz/quizzes', createquizz);
-    console.log(promisse);
     promisse.then(page334);
-    promisse.catch(alert('server indisponivel'))
+    promisse.catch(alert('erro'))
 }
 
 function page334(promisse){
@@ -525,7 +522,6 @@ function questions3() {
             testador = 0;
             break;
         } else { console.log('i'); }
-
     }
     if (testador == 1) {
         const page33 = document.querySelector('.page31');
