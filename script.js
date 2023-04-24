@@ -1,5 +1,10 @@
 ///variaveis globais page 3 ///
-let createquizz = {};
+let createquizz = {
+    title:'',
+    image:'',
+    questions:[],
+    levels:[]
+};
 createquizz.questions = [];
 createquizz.levels = [];
 //////////////////////
@@ -389,12 +394,7 @@ function troc() {
 /////
 ///PAGE 3 Sair da página de Níveis e finalizar o quizz///
 function qpronto() {
-    let promisse = axios.post('https://mock-api.driven.com.br/api/vm/buzzquizz/quizzes', {
-        title: createquizz.title,
-        image: createquizz.image,
-        questions: createquizz.questions,
-        levels: createquizz.levels
-    });
+    let promisse = axios.post('https://mock-api.driven.com.br/api/vm/buzzquizz/quizzes', createquizz)
     console.log(promisse);
     promisse.then(page334());
     promisse.catch(alert('server indisponivel'))
@@ -443,7 +443,7 @@ function basicdata3() {
         }
         box.innerHTML += '<button onclick="page323()" class="proceed3">Prosseguir pra criar níveis</button>'
         for (i = 2; i <= numlev; i++) {
-            box2.innerHTML += '<div onclick="questions32(this)"> <div class= "questions312"> <div class="title312">Nível ' + i + '</div><ion-icon name="create-outline"></ion-icon> </div> <div class="questions31 escondido" id="1' + i + '"> <div class="setor"> <div class="title31">Nível ' + i + '</div> <input type="text" class="levtitle" placeholder="Título do nível"> <input type="text" class="acertitle" placeholder="% de acerto mínima"> <input type="text" class="levimg" placeholder="URL da imagem do nível"> <input type="text" class="levdesc" placeholder="Descrição do nível"> </div> </div>';
+            box2.innerHTML += '<div onclick="questions32(this)"> <div class= "questions312"> <div class="title312">Nível ' + i + '</div><ion-icon name="create-outline"></ion-icon> </div> <div class="questions31 escondido" id="1'+i+'"> <div class="setor"> <div class="title31">Nível ' + i + '</div> <input type="text" class="levtitle" placeholder="Título do nível"> <input type="text" class="acertitle" placeholder="% de acerto mínima"> <input type="text" class="levimg" placeholder="URL da imagem do nível"> <input type="text" class="levdesc" placeholder="Descrição do nível"> </div> </div>';
         }
         box2.innerHTML += '<button onclick="levels3()" class="proceed3">Finalizar Quizz</button>'
         createquizz.title = titlee;
@@ -457,74 +457,28 @@ function questions3() {
     let numques = document.querySelector('.quiznump3').value;
     let boxq = document.querySelector('.box31');
     const regex = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i;
+    const regexi = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/;
     for (i = 0; i < numques; i++) {
         let testador = true;
         let question = document.getElementById(i + 1);
         let titlee = question.querySelector('.qtitle').value;
         let cor = question.querySelector('.qcolor').value;
+
         let asw1 = question.querySelector('.right');
         let qasw1 = asw1.querySelector('.qansw3').value;
-        if (qasw1 = '') {
-            createquizz.questions[i].answers = [];
-            alert('deuruim');
-            testador = false;
-            break;
-        } else { };
         let iasw1 = asw1.querySelector('.qimg3').value;
-        if (regex.test(iasw1)) { } else {
-            createquizz.questions[i].answers = [];
-            alert('deuruim');
-            testador = false;
-            break;
-        };
-
-
-
 
         let asw2 = question.querySelector('.wrong1');
         let qasw2 = asw2.querySelector('.qansw3').value;
-        if (qasw2 = '') {
-            createquizz.questions[i].answers = [];
-            alert('deuruim');
-            testador = false;
-            break;
-        } else { };
         let iasw2 = asw2.querySelector('.qimg3').value;
-        if (regex.test(iasw2)) { } else {
-            createquizz.questions[i].answers = [];
-            alert('deuruim');
-            testador = false;
-            break;
-        }
-
-
 
         let asw3 = question.querySelector('.wrong2');
         let qasw3 = asw3.querySelector('.qansw3').value;
         let iasw3 = asw3.querySelector('.qimg3').value;
-        if (qasw3 != '') {
-            if (regex.test(iasw3)) { } else {
-                createquizz.questions[i].answers = [];
-                alert('deuruim');
-                testador = false;
-                break;
-            }
-        }
-
-
 
         let asw4 = question.querySelector('.wrong3');
         let qasw4 = asw4.querySelector('.qansw3').value;
         let iasw4 = asw4.querySelector('.qimg3').value;
-        if (qasw4 != '') {
-            if (regex.test(iasw4)) { } else {
-                createquizz.questions[i].answers = [];
-                alert('deuruim');
-                testador = false;
-
-                break;
-            }
-        }
 
         createquizz.questions.push({
             title: titlee,
@@ -535,29 +489,39 @@ function questions3() {
         createquizz.questions[i].answers.push({
             text: qasw1,
             image: iasw1,
-            iscorrect: true
+            isCorrectAnswer: true
         });
 
         createquizz.questions[i].answers.push({
             text: qasw2,
             image: iasw2,
-            iscorrect: false
+            isCorrectAnswer: false
         });
 
-        createquizz.questions[i].answers.push({
-            text: qasw3,
-            image: iasw3,
-            iscorrect: false
-        });
+        if (qasw3 != '') {
+            createquizz.questions[i].answers.push({
+                text: qasw3,
+                image: iasw3,
+                isCorrectAnswer: false
+            })
+        };
 
-        createquizz.questions[i].answers.push({
-            text: qasw4,
-            image: iasw4,
-            iscorrect: false
-        });
-        console.log('1');
+        if (qasw4 != '') {
+            createquizz.questions[i].answers.push({
+                text: qasw4,
+                image: iasw4,
+                isCorrectAnswer: false
+            })
+        };
+
+        if (titlee.length < 20 || regexi.test(cor) == false || qasw1 == '' || qasw2 == '') {
+            alert('deu ruim');
+            testador = false;
+            break
+        } else { console.log('i'); }
+
     }
-    if (testador = true ){
+    if (testador = true) {
         const page33 = document.querySelector('.page31');
         page33.classList.add('escondido');
         const pag1 = document.querySelector('.page32');
@@ -571,6 +535,7 @@ function levels3() {
     let numlev = document.querySelector('.quizlev3').value;
     const regex = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i;
     for (i = 1; i <= numlev; i++) {
+        let testador = true;
         let level = document.getElementById(i + 10);
         let levtitlee = level.querySelector('.levtitle').value;
         let levporc = level.querySelector('.acertitle').value;
@@ -580,28 +545,34 @@ function levels3() {
         if (levtitlee < 10) {
             createquizz.levels = [];
             alert('deuruim');
+            testador = false;
             break;
         }
-        resposta.title = levtitlee;
-        resposta.image = levimg;
+
+        createquizz.levels.push({
+            title: levtitlee,
+            image: image = levimg,
+            text: levdesc,
+            minValue: levporc,
+        });
+
         if (regex.test(levimg)) { } else {
             createquizz.levels = [];
             alert('deuruim');
+            testador = false;
+
             break;
         }
-        resposta.text = levdesc;
-        if (levporc > 0 && levporc < 100) { }
-        else {
+
+        if (levporc < 0 && levporc > 100) {
             createquizz.levels = [];
             alert('deuruim');
+            testador = false;
             break;
-
         }
-        resposta.minValue = levporc;
-        createquizz.levels[i - 1] = resposta;
-        if (i = numlev) {
-            page334();
-        }
+    }
+    if (testador = true) {
+        page334();
     }
 }
 ////// PAGE 3 FIM ///
