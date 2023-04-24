@@ -5,6 +5,7 @@ let createquizz = {
     questions: [],
     levels: []
 };
+const meusquizzes = [];
 createquizz.questions = [];
 createquizz.levels = [];
 //////////////////////
@@ -397,16 +398,20 @@ function troc() {
 function qpronto() {
     let promisse = axios.post('https://mock-api.driven.com.br/api/vm/buzzquizz/quizzes', createquizz);
     console.log(promisse);
-    promisse.then(page334());
+    promisse.then(page334);
     promisse.catch(alert('server indisponivel'))
 }
 
-function page334() {
+function page334(promisse){
+    console.log(promisse);
+    meusquizzes.push(promisse.data.id);
     const page32 = document.querySelector('.page32');
     const page33 = document.querySelector('.page33');
     page32.classList.add('escondido');
     page33.classList.remove('escondido');
     window.scrollTo(0, 0);
+    let imgp3 = page33.querySelector('.imgp3');
+    imgp3 += '<div class="fadeimg"></div><div class="imgtitle33">${promisse.data.title}</div><img src="${promisse.data.image}" class="img31"></img>';
 }
 //////
 ///// PAGE 3 Quizz finalizado, voltar pra home ////
@@ -420,8 +425,9 @@ function home() {
 /////
 ////ABRE COISAS COLAPSADAS /////
 function questions32(question) {
-    const questmenu = question.querySelector('.questions312');
-    const quest = question.querySelector('.questions31');
+    const tudo = question.closest('.tudao');
+    const questmenu = tudo.querySelector('.questions312');
+    const quest = tudo.querySelector('.questions31');
     questmenu.classList.add('escondido');
     quest.classList.remove('escondido');
 
@@ -439,13 +445,13 @@ function basicdata3() {
     const regex = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i;
     if (titlee.length >= 20 && titlee.length <= 65 && regex.test(img) && numques > 2 && numlev > 1) {
         for (i = 2; i <= numques; i++) {
-            box.innerHTML += '<div onclick="questions32(this)"> <div class="questions312"> <div class="title312">Pergunta ' + i + '</div><ion-icon name="create-outline"></ion-icon> </div> <div class="questions31 escondido" id="' + i + '"> <div class="setor"> <div class="title31">Pergunta ' + i + '</div> <input type="text" class="qtitle" placeholder="Texto da pergunta"> <input type="text" class="qcolor" placeholder="Cor de fundo da pergunta"> </div> <div class="setor right"> <div class="title31">Resposta correta</div> <input type="text" class="qansw3" placeholder="Resposta correta"> <input type="text" class="qimg3" placeholder="URL da imagem"> </div> <div class="setor wrong1"> <div class="title31">Respostas incorretas</div> <input type="text" class="qansw3" placeholder="Resposta incorreta 1"> <input type="text" class="qimg3" placeholder="URL da imagem 1"> </div> <div class="setor wrong2"> <input type="text" class="qansw3" placeholder="Resposta incorreta 2"> <input type="text" class="qimg3" placeholder="URL da imagem 2"> </div> <div class="setor wrong3"> <input type="text" class="qansw3" placeholder="Resposta incorreta 3"> <input type="text" class="qimg3" placeholder="URL da imagem 3"> </div> </div>'
+            box.innerHTML += '<div class="tudao"><div class="questions312" data-test="question-ctn"> <div class="title312">Pergunta ' + i + '</div> <button class="toggle" onclick="questions32(this)" data-test="toggle"> <ion-icon name="create-outline"></ion-icon> </button> </div><div class="questions31 escondido" id="' + i + '" data-test="question-ctn"> <div class="setor"> <div class="title31">Pergunta ' + i + '</div> <input type="text" class="qtitle" placeholder="Texto da pergunta"  data-test="question-input" > <input type="text" class="qcolor" placeholder="Cor de fundo da pergunta" data-test="question-color-input"> </div> <div class="setor right"> <div class="title31">Resposta correta</div> <input type="text" class="qansw3" placeholder="Resposta correta" data-test="correct-answer-input" > <input type="text" class="qimg3" placeholder="URL da imagem" data-test="correct-img-input"> </div> <div class="setor wrong1"> <div class="title31">Respostas incorretas</div> <input type="text" class="qansw3" placeholder="Resposta incorreta 1" data-test="wrong-answer-input"> <input type="text" class="qimg3" placeholder="URL da imagem 1" data-test="wrong-img-input" > </div> <div class="setor wrong2"> <input type="text" class="qansw3" placeholder="Resposta incorreta 2 " data-test="wrong-answer-input"> <input type="text" class="qimg3" placeholder="URL da imagem 2" data-test="wrong-img-input"> </div> <div class="setor wrong3"> <input type="text" class="qansw3" placeholder="Resposta incorreta 3" data-test="wrong-answer-input"> <input type="text" class="qimg3" placeholder="URL da imagem 3" data-test="wrong-img-input"> </div> </div></div>'
         }
-        box.innerHTML += '<button onclick="page323()" class="proceed3">Prosseguir pra criar níveis</button>'
+        box.innerHTML += '<button onclick="page323()" class="proceed3" data-test="go-create-levels">Prosseguir pra criar níveis</button>'
         for (i = 2; i <= numlev; i++) {
-            box2.innerHTML += '<div onclick="questions32(this)"> <div class= "questions312"> <div class="title312">Nível ' + i + '</div><ion-icon name="create-outline"></ion-icon> </div> <div class="questions31 escondido" id="1' + i + '"> <div class="setor"> <div class="title31">Nível ' + i + '</div> <input type="text" class="levtitle" placeholder="Título do nível"> <input type="text" class="acertitle" placeholder="% de acerto mínima"> <input type="text" class="levimg" placeholder="URL da imagem do nível"> <input type="text" class="levdesc" placeholder="Descrição do nível"> </div> </div>';
+            box2.innerHTML += '<div class="tudao"><div class="questions312" data-test="level-ctn"> <div class="title312">Nível ' + i + '</div> <button class="toggle" onclick="questions32(this)" data-test="toggle"> <ion-icon name="create-outline"></ion-icon> </button> </div><div class="questions31 escondido" id="1' + i + '"> <div class="setor" data-test="level-ctn"> <div class="title31">Nível ' + i + '</div> <input type="text" class="levtitle" placeholder="Título do nível" data-test="level-input"> <input type="text" class="acertitle" placeholder="% de acerto mínima" data-test="level-percent-input"> <input type="text" class="levimg" placeholder="URL da imagem do nível" data-test="level-img-input"> <input type="text" class="levdesc" placeholder="Descrição do nível"  data-test="level-description-input"> </div> </div></div>';
         }
-        box2.innerHTML += '<button onclick="levels3()" class="proceed3">Finalizar Quizz</button>'
+        box2.innerHTML += '<button onclick="levels3()" class="proceed3" data-test="finish">Finalizar Quizz</button>'
         createquizz.title = titlee;
         createquizz.image = img;
         page312();
@@ -457,9 +463,10 @@ function questions3() {
     let numques = document.querySelector('.quiznump3').value;
     let boxq = document.querySelector('.box31');
     const regex = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i;
-    const regexi = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/;
+    const regexi = /^#([A-Fa-f0-9]{6})$/;
+    let testador = 1;
     for (i = 0; i < numques; i++) {
-        let testador = true;
+        testador = 1;
         let question = document.getElementById(i + 1);
         let titlee = question.querySelector('.qtitle').value;
         let cor = question.querySelector('.qcolor').value;
@@ -516,12 +523,12 @@ function questions3() {
 
         if (titlee.length < 20 || regexi.test(cor) == false || qasw1 == '' || qasw2 == '') {
             alert('deu ruim');
-            testador = false;
-            break
+            testador = 0;
+            break;
         } else { console.log('i'); }
 
     }
-    if (testador = true) {
+    if (testador == 1) {
         const page33 = document.querySelector('.page31');
         page33.classList.add('escondido');
         const pag1 = document.querySelector('.page32');
@@ -575,4 +582,4 @@ function levels3() {
         qpronto();
     }
 }
-////// PAGE 3 FIM ///
+////// PAGE 3 FIM /////
