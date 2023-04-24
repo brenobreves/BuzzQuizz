@@ -396,16 +396,18 @@ function troc() {
 function qpronto() {
     let promisse = axios.post('https://mock-api.driven.com.br/api/vm/buzzquizz/quizzes', createquizz);
     console.log(promisse);
-    promisse.then(page334());
+    promisse.then(page334);
     promisse.catch(alert('server indisponivel'))
 }
 
-function page334() {
+function page334(resposta) {
     const page32 = document.querySelector('.page32');
     const page33 = document.querySelector('.page33');
     page32.classList.add('escondido');
     page33.classList.remove('escondido');
     window.scrollTo(0, 0);
+    let imgp3 = page33.querySelector('.imgp3');
+    imgp3 += '<div class="fadeimg"></div><div class="imgtitle33">${resposta.data.title}</div><img src="${resposta.data.image}" class="img31"></img>';
 }
 //////
 ///// PAGE 3 Quizz finalizado, voltar pra home ////
