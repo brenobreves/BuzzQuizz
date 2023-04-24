@@ -32,11 +32,34 @@ function exibeTodosQuizz(resposta) {
     let data = resposta.data;
     let container = document.querySelector('.containertodosquizz');
     container.innerHTML = "";
+    let meusquizz = document.querySelector('.meusquizz');
+    meusquizz.innerHTML = "";
+
     for (let i = 0; i < data.length; i++) {
-        container.innerHTML += `<div class="quizz1" id="${data[i].id}" onclick="fazerQuizz(${data[i].id})" data-test="others-quiz"">
-        <img src=${data[i].image} class="quizzimg1">
-        <div class="quizz1titulo">${data[i].title}</div>
-    </div>`
+        if(!meusquizzes.includes(data[i].id)){
+            container.innerHTML += `<div class="quizz1" id="${data[i].id}" onclick="fazerQuizz(${data[i].id})" data-test="others-quiz"">
+            <img src=${data[i].image} class="quizzimg1">
+            <div class="quizz1titulo">${data[i].title}</div>
+            </div>`
+        }
+        else{
+            meusquizz.innerHTML += `<div class="quizz1" id="${data[i].id}" onclick="fazerQuizz(${data[i].id})" data-test="others-quiz"">
+            <img src=${data[i].image} class="quizzimg1">
+            <div class="quizz1titulo">${data[i].title}</div>
+            </div>`
+        }   
+    }
+    if(meusquizz.innerHTML == ""){
+        let semquizz = document.querySelector('.semquizz1');
+        semquizz.classList.remove('escondido');
+        let comquizz = document.querySelector('.seusquizzes1')
+        comquizz.classList.add('escondido');
+    }
+    else{
+        let semquizz = document.querySelector('.semquizz1');
+        semquizz.classList.add('escondido');
+        let comquizz = document.querySelector('.seusquizzes1')
+        comquizz.classList.remove('escondido');
     }
 }
 ////// PAGE 1 FIM ////
