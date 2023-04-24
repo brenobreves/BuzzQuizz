@@ -126,7 +126,8 @@
                     <input class="quizlev3" type="text" placeholder="Quantidade de níveis do quizz"
                         data-test="levels-amount-input">
                 </div>
-                <button onclick="basicdata3()" class="proceed3" data-test="go-create-questions">Prosseguir pra criar perguntas</button>
+                <button onclick="basicdata3()" class="proceed3" data-test="go-create-questions">Prosseguir pra criar
+                    perguntas</button>
             </div>
         </div>
     </div>
@@ -174,62 +175,63 @@
                         <input type="text" class="qimg3" placeholder="URL da imagem 3" data-test="wrong-img-input">
                     </div>
                 </div>
+
+             
             </div>
         </div>
-    </div>
-    <!-- FIM PAGINA 3 PARTE 2-->
+        <!-- FIM PAGINA 3 PARTE 2-->
 
 
-    <!-- PAGINA 3 PARTE 3-->
+        <!-- PAGINA 3 PARTE 3-->
 
-    <div class="page32 escondido">
-        <div class="header3">
-            <div class="headtitle3">BuzzQuizz</div>
-        </div>
-        <div class="body3">
-            <div class="box32">
-                <div class="title3">Agora, decida os níveis
-                </div>
-                <div class="questions31" id="11" data-test="level-ctn">
-                    <div class="setor">
-                        <div class="title31">Nível 1</div>
-                        <input type="text" class="levtitle" placeholder="Título do nível" data-test="level-input">
-                        <input type="text" class="acertitle" placeholder="% de acerto mínima"
-                            data-test="level-percent-input">
-                        <input type="text" class="levimg" placeholder="URL da imagem do nível"
-                            data-test="level-img-input">
-                        <input type="text" class="levdesc" placeholder="Descrição do nível"
-                            data-test="level-description-input">
+        <div class="page32 escondido">
+            <div class="header3">
+                <div class="headtitle3">BuzzQuizz</div>
+            </div>
+            <div class="body3">
+                <div class="box32">
+                    <div class="title3">Agora, decida os níveis
+                    </div>
+                    <div class="questions31" id="11" data-test="level-ctn">
+                        <div class="setor">
+                            <div class="title31">Nível 1</div>
+                            <input type="text" class="levtitle" placeholder="Título do nível" data-test="level-input">
+                            <input type="text" class="acertitle" placeholder="% de acerto mínima"
+                                data-test="level-percent-input">
+                            <input type="text" class="levimg" placeholder="URL da imagem do nível"
+                                data-test="level-img-input">
+                            <input type="text" class="levdesc" placeholder="Descrição do nível"
+                                data-test="level-description-input">
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- FIM PAGINA 3 PARTE 3-->
+        <!-- FIM PAGINA 3 PARTE 3-->
 
-    <!-- PAGINA 3 PARTE 4-->
-    <div class="page33 escondido">
-        <div class="header3">
-            <div class="headtitle3">BuzzQuizz</div>
-        </div>
-        <div class="body3">
-            <div class="box3">
-                <div class="title3">Seu quizz está pronto!</div>
-                <div class="imgp3">
-                    <div class="fadeimg"></div>
-                    <div class="imgtitle33">${resposta.data.title}</div>
-                    <img src="${resposta.data.image}" class="img31"></img>
+        <!-- PAGINA 3 PARTE 4-->
+        <div class="page33 escondido">
+            <div class="header3">
+                <div class="headtitle3">BuzzQuizz</div>
+            </div>
+            <div class="body3">
+                <div class="box3">
+                    <div class="title3">Seu quizz está pronto!</div>
+                    <div class="imgp3">
+                        <div class="fadeimg"></div>
+                        <div class="imgtitle33">${resposta.data.title}</div>
+                        <img src="${resposta.data.image}" class="img31"></img>
+                    </div>
+                    <button class="proceed3" data-test="go-quiz">Acessar Quizz</button>
+                    <button onclick="home()" class="home" data-test="go-home">Voltar pra home</button>
                 </div>
-                <button class="proceed3" data-test="go-quiz">Acessar Quizz</button>
-                <button onclick="home()" class="home" data-test="go-home">Voltar pra home</button>
             </div>
         </div>
-    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <script src="./script.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+        <script src="./script.js"></script>
 </body>
 
 </html>
