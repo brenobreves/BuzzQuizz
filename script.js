@@ -374,6 +374,8 @@ function reiniciar() {
 function voltarHome() {
     const verSeTemEsconcido = document.querySelector('.pagina2');
     verSeTemEsconcido.classList.add('escondido');
+    let pegaTodosQuizz = axios.get("https://mock-api.driven.com.br/api/vm/buzzquizz/quizzes");
+    pegaTodosQuizz.then(exibeTodosQuizz);
     const pagina21 = document.querySelector('.pag1');
     pagina21.classList.remove('escondido');
 }
@@ -437,6 +439,8 @@ function page334(promisse){
 function home() {
     const page33 = document.querySelector('.page33');
     page33.classList.add('escondido');
+    let pegaTodosQuizz = axios.get("https://mock-api.driven.com.br/api/vm/buzzquizz/quizzes");
+    pegaTodosQuizz.then(exibeTodosQuizz);
     const pag1 = document.querySelector('.pag1');
     pag1.classList.remove('escondido');
     window.scrollTo(0, 0);
