@@ -446,7 +446,7 @@ function basicdata3() {
         }
         box.innerHTML += '<button onclick="page323()" class="proceed3" data-test="go-create-levels">Prosseguir pra criar níveis</button>'
         for (i = 2; i <= numlev; i++) {
-            box2.innerHTML += '<div class="tudao"><div class="questions312" data-test="level-ctn"> <div class="title312">Nível ' + i + '</div> <button class="toggle" onclick="questions32(this)" data-test="toggle"> <ion-icon name="create-outline"></ion-icon> </button> </div><div class="questions31 escondido"  data-test="level-ctn" id="1' + i + '"> <div class="setor"> <div class="title31">Nível ' + i + '</div> <input type="text" class="levtitle" placeholder="Título do nível" data-test="level-input"> <input type="text" class="acertitle" placeholder="% de acerto mínima" data-test="level-percent-input"> <input type="text" class="levimg" placeholder="URL da imagem do nível" data-test="level-img-input"> <input type="text" class="levdesc" placeholder="Descrição do nível"  data-test="level-description-input"> </div> </div></div>';
+            box2.innerHTML += '<div class="tudao" data-test="level-ctn"><div class="questions312" data-test="level-ctn"> <div class="title312">Nível ' + i + '</div> <button class="toggle" onclick="questions32(this)" data-test="toggle"> <ion-icon name="create-outline"></ion-icon> </button> </div><div class="questions31 escondido"  data-test="level-ctn" id="1' + i + '"> <div class="setor"> <div class="title31">Nível ' + i + '</div> <input type="text" class="levtitle" placeholder="Título do nível" data-test="level-input"> <input type="text" class="acertitle" placeholder="% de acerto mínima" data-test="level-percent-input"> <input type="text" class="levimg" placeholder="URL da imagem do nível" data-test="level-img-input"> <input type="text" class="levdesc" placeholder="Descrição do nível"  data-test="level-description-input"> </div> </div></div>';
         }
         box2.innerHTML += '<button onclick="levels3()" class="proceed3" data-test="finish">Finalizar Quizz</button>'
         createquizz.title = titlee;
@@ -460,7 +460,7 @@ function questions3() {
     let numques = document.querySelector('.quiznump3').value;
     let boxq = document.querySelector('.box31');
     const regex = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i;
-    const regexi = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/;
+    const regexi = /^#([A-Fa-f0-9]{6})$/;
     let testador = 1;
     for (i = 0; i < numques; i++) {
         testador = 1;
