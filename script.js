@@ -436,8 +436,8 @@ function page334(promisse){
     page32.classList.add('escondido');
     page33.classList.remove('escondido');
     window.scrollTo(0, 0);
-    let imgp3 = page33.querySelector('.imgp3');
-    imgp3 += '<div class="fadeimg"></div><div class="imgtitle33">${promisse.data.title}</div><img src="${promisse.data.image}" class="img31"></img>';
+    let imgp3 = document.querySelector('.imgp3');
+    imgp3.innerHTML += '<div class="fadeimg"></div><div class="imgtitle33">'+promisse.data.title+'</div><img src="'+promisse.data.image+'" class="img31"></img>';
 }
 //////
 ///// PAGE 3 Quizz finalizado, voltar pra home ////
@@ -477,7 +477,7 @@ function basicdata3() {
         }
         box.innerHTML += '<button onclick="page323()" class="proceed3" data-test="go-create-levels">Prosseguir pra criar níveis</button>'
         for (i = 2; i <= numlev; i++) {
-            box2.innerHTML += '<div class="tudao"><div class="questions312" data-test="level-ctn"> <div class="title312">Nível ' + i + '</div> <button class="toggle" onclick="questions32(this)" data-test="toggle"> <ion-icon name="create-outline"></ion-icon> </button> </div><div class="questions31 escondido"  data-test="level-ctn" id="1' + i + '"> <div class="setor"> <div class="title31">Nível ' + i + '</div> <input type="text" class="levtitle" placeholder="Título do nível" data-test="level-input"> <input type="text" class="acertitle" placeholder="% de acerto mínima" data-test="level-percent-input"> <input type="text" class="levimg" placeholder="URL da imagem do nível" data-test="level-img-input"> <input type="text" class="levdesc" placeholder="Descrição do nível"  data-test="level-description-input"> </div> </div></div>';
+            box2.innerHTML += '<div class="tudao"><div class="questions312" data-test="level-ctn"> <div class="title312">Nível ' + i + '</div> <button class="toggle" onclick="questions32(this)" data-test="toggle"> <ion-icon name="create-outline"></ion-icon> </button> </div><div class="questions31 escondido" id="1' + i + '"> <div class="setor" data-test="level-ctn"> <div class="title31">Nível ' + i + '</div> <input type="text" class="levtitle" placeholder="Título do nível" data-test="level-input"> <input type="text" class="acertitle" placeholder="% de acerto mínima" data-test="level-percent-input"> <input type="text" class="levimg" placeholder="URL da imagem do nível" data-test="level-img-input"> <input type="text" class="levdesc" placeholder="Descrição do nível"  data-test="level-description-input"> </div> </div></div>';
         }
         box2.innerHTML += '<button onclick="levels3()" class="proceed3" data-test="finish">Finalizar Quizz</button>'
         createquizz.title = titlee;
