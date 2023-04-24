@@ -407,6 +407,7 @@ function caixaFinal(resposta) {
            </div>
        </div>`
         filtrador++;
+        scrollToBottom();
     }
 
 
