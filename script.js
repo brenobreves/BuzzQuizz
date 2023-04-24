@@ -430,7 +430,6 @@ function troc() {
 function qpronto() {
     let promisse = axios.post('https://mock-api.driven.com.br/api/vm/buzzquizz/quizzes', createquizz);
     promisse.then(page334);
-    promisse.catch(alert('erro'))
 }
 
 function page334(promisse){
