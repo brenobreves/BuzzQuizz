@@ -193,7 +193,7 @@ button:hover {
     position: fixed;
     top: 0px;
     left: 0px;
-    z-index: 1;
+    z-index: 10;
 }
 
 .titulo-topo2 {
@@ -225,7 +225,6 @@ button:hover {
     align-items: center;
     position: relative;
 
-
 }
 
 .banner-imagem-img {
@@ -249,6 +248,7 @@ button:hover {
     background: rgb(230, 230, 230);
     position: relative;
 
+
 }
 
 .banner-imagem p {
@@ -260,6 +260,7 @@ button:hover {
     line-height: 46px;
     text-align: center;
     color:  #FFFFFF;
+    z-index: 2;
 }
 
 .pergunta {
@@ -534,7 +535,7 @@ button:hover {
     position: fixed;
     top: 0px;
     left: 0px;
-    z-index: 1;
+    z-index: 10;
 }
 
 
@@ -830,6 +831,8 @@ button:hover {
     background: rgb(0, 0, 0);
     background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(255, 255, 255, 0) 100%);
     border-radius: 10px;
+    position: absolute;
+    z-index: 1;
 }
 
 .escondido {

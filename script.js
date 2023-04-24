@@ -82,7 +82,7 @@ function deuCerto(resposta) {
     quantidadeDeLevel = resposta.data.levels.length;
     limpar.innerHTML += `
             <div class="banner-imagem" data-test="banner" >
-                <img class="banner-imagem-img" src="${resposta.data.image}" alt=""> 
+                <img class="banner-imagem-img" src="${resposta.data.image}" alt=""> <div class="fadeimg"></div>
                 <p>${resposta.data.title}</p>
             </div>
             
@@ -110,7 +110,7 @@ function deuCerto(resposta) {
                     <div class="lado-esquerdo ">
                         <div class="primeira-imagem naoCelecionado ${resposta.data.questions[n].answers[embaralhado[0]].isCorrectAnswer}" onclick="selecionarResposta(this)" data-test="answer">
                             <img class="imagem " src="${resposta.data.questions[n].answers[embaralhado[0]].image}" > 
-                            <p class="nome  data-test="answer-text" >${resposta.data.questions[n].answers[embaralhado[0]].text} </p>
+                            <p class="nome"  data-test="answer-text" >${resposta.data.questions[n].answers[embaralhado[0]].text} </p>
                         </div>
                     </div>
                     <div class="lado-direito lado-direito${[n]}">
@@ -145,7 +145,7 @@ function deuCerto(resposta) {
                             </div>
                             <div class="segunda-imagem naoCelecionado ${resposta.data.questions[n].answers[embaralhado[1]].isCorrectAnswer}" onclick="selecionarResposta(this)" data-test="answer">
                                 <img class="imagem " src="${resposta.data.questions[n].answers[embaralhado[1]].image}" > 
-                                <p class="nome   data-test="answer-text" >${resposta.data.questions[n].answers[embaralhado[1]].text}</p>
+                                <p class="nome"   data-test="answer-text" >${resposta.data.questions[n].answers[embaralhado[1]].text}</p>
                             </div>
                         </div>
                         <div class="lado-direito ">
