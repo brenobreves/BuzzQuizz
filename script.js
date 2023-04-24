@@ -52,6 +52,7 @@ let qualQuizz;
 function fazerQuizz(p) {
     qualQuizz = p;
     let quizDoServidor = axios.get(`https://mock-api.driven.com.br/api/vm/buzzquizz/quizzes/${qualQuizz}`);
+    console.log(quizDoServidor);
 
     // let quizDoServidor = axios.get('https://mock-api.driven.com.br/api/vm/buzzquizz/quizzes/55');
     quizDoServidor.then(deuCerto);
