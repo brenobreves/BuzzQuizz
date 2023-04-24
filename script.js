@@ -35,6 +35,9 @@ function exibeTodosQuizz(resposta) {
 // PAGINA 2 Quando a pessoa para selecionar a imagem da pergunta-1
 
 // obter o quizz do servidor
+function scrollToTop() {
+    window.scrollTo(0, 0);
+}
 let qualQuizz;
 function fazerQuizz(p) {
     qualQuizz = p;
@@ -42,7 +45,6 @@ function fazerQuizz(p) {
 
     // let quizDoServidor = axios.get('https://mock-api.driven.com.br/api/vm/buzzquizz/quizzes/55');
     quizDoServidor.then(deuCerto);
-    console.log(quizDoServidor);
     page1to2();
 }
 
@@ -67,9 +69,7 @@ function deuCerto(resposta) {
     limpar.innerHTML = '';
     quantidadeDeQuestoes = resposta.data.questions.length;
     level = resposta.data.levels;
-    console.log(level);
     quantidadeDeLevel = resposta.data.levels.length;
-    console.log(quantidadeDeLevel);
     limpar.innerHTML += `
             <div class="banner-imagem" data-test="banner" >
                 <img src="${resposta.data.image}" alt=""> 
@@ -77,13 +77,13 @@ function deuCerto(resposta) {
             </div>
             
     `
+    scrollToTop();
 
     for (let n = 0; n < quantidadeDeQuestoes; n++) {
 
         // eu vou ver o answers.length e vou fazer um teste
         let quantasImagens = resposta.data.questions[n].answers.length;
         let cor = resposta.data.questions[n].color;
-        console.log(cor);
         // se answers.length for = 2 so primeira e segunda
         if (quantasImagens === 2) {
             for (let i = 0; i < quantasImagens; i++) {
@@ -210,12 +210,10 @@ function selecionarResposta(respota1) {
         const ver = document.querySelectorAll(`.pergunta${numerodapergunta} .naoCelecionado`);
         porcentagemDeAcerto++;
         // const certo = ver.querySelector('true');
-        console.log(ver);
 
         for (let i = 0; i < ver.length; i++) {
             ver[i].classList.add('opacidade');
             let errou = ver[i].querySelector('.nome');
-            console.log(errou);
             errou.classList.add('errou');
             ver[i].onclick = null;
 
@@ -243,7 +241,6 @@ function selecionarResposta(respota1) {
         verificarSeFoiTudoRespondido++;
         //errou a resposta
         const certo = document.querySelector(`.pergunta${numerodapergunta} .true .nome`);
-        console.log(certo);
         certo.classList.add('acertou');
 
         const certo1 = document.querySelector(`.pergunta${numerodapergunta} .true `)
@@ -255,7 +252,6 @@ function selecionarResposta(respota1) {
         respota1.classList.remove('naoCelecionado');
         const selecionadoPeloUsuario = respota1.querySelector('.imagem');
         const ver = document.querySelectorAll(`.pergunta${numerodapergunta} .naoCelecionado`);
-        console.log(ver);
 
         for (let i = 0; i < ver.length; i++) {
             ver[i].classList.add('opacidade');
@@ -285,24 +281,21 @@ function selecionarResposta(respota1) {
     }
 }
 
-function mostraResultado() {
 
-    let retira = document.querySelector(`.pergunta${quantidadeDeQuestoes - 1} `);
-    console.log(retira);
-    if (retira !== null) {
-        window.scrollTo({
-            top: retira.offsetTop,
-            behavior: 'smooth'
-        })
-    };
+function mostraResultado() {
 
     quantoAcertou = (porcentagemDeAcerto / quantidadeDeQuestoes) * 100;
     quantoAcertouFinal = Math.floor(quantoAcertou);
-    console.log(quantoAcertouFinal);
     let levelDoServido = axios.get(`https://mock-api.driven.com.br/api/vm/buzzquizz/quizzes/${qualQuizz}`);
     //let levelDoServido = axios.get('https://mock-api.driven.com.br/api/vm/buzzquizz/quizzes/55');
     levelDoServido.then(caixaFinal);
 
+
+}
+
+function scrollToBottom() {
+    let altura = document.documentElement.scrollHeight - window.innerHeight;
+    window.scrollTo(0, altura);
 }
 
 function caixaFinal(resposta) {
@@ -311,7 +304,7 @@ function caixaFinal(resposta) {
         if (quantoAcertouFinal >= resposta.data.levels[i].minValue && filtrador === 0) {
             let divDosAcertos = document.querySelector('.interacao');
             divDosAcertos.innerHTML += ` 
-           <div class=" finalizando-acerto ">
+           <div class=" finalizando-acerto" >
                <div class=" nivel-acerto " data-test="level-title">
                    <p> ${quantoAcertouFinal}% de acerto: ${resposta.data.levels[i].title} </p>
                </div>
@@ -329,8 +322,10 @@ function caixaFinal(resposta) {
                </div>
            </div>`
             filtrador++;
+            scrollToBottom();
         }
     }
+
 }
 
 function reiniciar() {
