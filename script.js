@@ -1,9 +1,9 @@
 ///variaveis globais page 3 ///
 let createquizz = {
-    title:'',
-    image:'',
-    questions:[],
-    levels:[]
+    title: '',
+    image: '',
+    questions: [],
+    levels: []
 };
 createquizz.questions = [];
 createquizz.levels = [];
@@ -394,14 +394,13 @@ function troc() {
 /////
 ///PAGE 3 Sair da página de Níveis e finalizar o quizz///
 function qpronto() {
-    let promisse = axios.post('https://mock-api.driven.com.br/api/vm/buzzquizz/quizzes', createquizz)
+    let promisse = axios.post('https://mock-api.driven.com.br/api/vm/buzzquizz/quizzes', createquizz);
     console.log(promisse);
     promisse.then(page334());
     promisse.catch(alert('server indisponivel'))
 }
 
 function page334() {
-
     const page32 = document.querySelector('.page32');
     const page33 = document.querySelector('.page33');
     page32.classList.add('escondido');
@@ -443,7 +442,7 @@ function basicdata3() {
         }
         box.innerHTML += '<button onclick="page323()" class="proceed3">Prosseguir pra criar níveis</button>'
         for (i = 2; i <= numlev; i++) {
-            box2.innerHTML += '<div onclick="questions32(this)"> <div class= "questions312"> <div class="title312">Nível ' + i + '</div><ion-icon name="create-outline"></ion-icon> </div> <div class="questions31 escondido" id="1'+i+'"> <div class="setor"> <div class="title31">Nível ' + i + '</div> <input type="text" class="levtitle" placeholder="Título do nível"> <input type="text" class="acertitle" placeholder="% de acerto mínima"> <input type="text" class="levimg" placeholder="URL da imagem do nível"> <input type="text" class="levdesc" placeholder="Descrição do nível"> </div> </div>';
+            box2.innerHTML += '<div onclick="questions32(this)"> <div class= "questions312"> <div class="title312">Nível ' + i + '</div><ion-icon name="create-outline"></ion-icon> </div> <div class="questions31 escondido" id="1' + i + '"> <div class="setor"> <div class="title31">Nível ' + i + '</div> <input type="text" class="levtitle" placeholder="Título do nível"> <input type="text" class="acertitle" placeholder="% de acerto mínima"> <input type="text" class="levimg" placeholder="URL da imagem do nível"> <input type="text" class="levdesc" placeholder="Descrição do nível"> </div> </div>';
         }
         box2.innerHTML += '<button onclick="levels3()" class="proceed3">Finalizar Quizz</button>'
         createquizz.title = titlee;
@@ -572,7 +571,7 @@ function levels3() {
         }
     }
     if (testador = true) {
-        page334();
+        qpronto();
     }
 }
 ////// PAGE 3 FIM ///
