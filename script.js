@@ -410,7 +410,7 @@ function page334(promisse){
     page33.classList.remove('escondido');
     window.scrollTo(0, 0);
     let imgp3 = page33.querySelector('.imgp3');
-    imgp3 += '<div class="fadeimg"></div><div class="imgtitle33">${promisse.data.title}</div><img src="${promisse.data.image}" class="img31"></img>';
+    imgp3 += '<div class="fadeimg"></div><div class="imgtitle33">'+promisse.data.title+'</div><img src="'+promisse.data.image+'" class="img31"></img>';
 }
 //////
 ///// PAGE 3 Quizz finalizado, voltar pra home ////
