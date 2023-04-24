@@ -400,14 +400,15 @@ function qpronto() {
     promisse.catch(alert('server indisponivel'))
 }
 
-function page334(resposta) {
+function page334(promisse){
+    console.log(promisse);
     const page32 = document.querySelector('.page32');
     const page33 = document.querySelector('.page33');
     page32.classList.add('escondido');
     page33.classList.remove('escondido');
     window.scrollTo(0, 0);
     let imgp3 = page33.querySelector('.imgp3');
-    imgp3 += '<div class="fadeimg"></div><div class="imgtitle33">${resposta.data.title}</div><img src="${resposta.data.image}" class="img31"></img>';
+    imgp3 += '<div class="fadeimg"></div><div class="imgtitle33">${promisse.data.title}</div><img src="${promisse.data.image}" class="img31"></img>';
 }
 //////
 ///// PAGE 3 Quizz finalizado, voltar pra home ////
@@ -460,8 +461,9 @@ function questions3() {
     let boxq = document.querySelector('.box31');
     const regex = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i;
     const regexi = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/;
+    let testador = 1;
     for (i = 0; i < numques; i++) {
-        let testador = true;
+        testador = 1;
         let question = document.getElementById(i + 1);
         let titlee = question.querySelector('.qtitle').value;
         let cor = question.querySelector('.qcolor').value;
@@ -518,12 +520,12 @@ function questions3() {
 
         if (titlee.length < 20 || regexi.test(cor) == false || qasw1 == '' || qasw2 == '') {
             alert('deu ruim');
-            testador = false;
+            testador = 0;
             break;
         } else { console.log('i'); }
 
     }
-    if (testador == true) {
+    if (testador == 1) {
         const page33 = document.querySelector('.page31');
         page33.classList.add('escondido');
         const pag1 = document.querySelector('.page32');
