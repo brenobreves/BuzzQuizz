@@ -672,13 +672,23 @@ button:hover {
         line-height: 20px;
         color: #484848;
     }
- .texto-acerto{
-    width: auto;
- }
 
+    .texto-acerto {
+        width: auto;
+    }
 
+    .acertou {
+        color: #009C22;
+    }
+    
+    .errou {
+        color: #FF4B4B;
+    }
+    
 
 }
+
+/*FIM DA PÁGINA2 @MIDIA*/
 
 
 /*pagina 3 - 1 */
@@ -876,11 +886,13 @@ button:hover {
     padding-right: 20px;
 
 }
-.toggle{
+
+.toggle {
     border: none;
     background-color: white;
     font-size: 30px;
 }
+
 .title312 {
     font-family: 'Roboto', sans-serif;
     font-style: bold;
