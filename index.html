@@ -17,7 +17,7 @@
 
 <body>
     <!-- PAGINA 1 PARTE 1 sem quizz-->
-    <div class="pag1">
+    <div class="pag1 escondido">
         <div class="header3">
             <div class="headtitle3">BuzzQuizz</div>
         </div>
@@ -176,63 +176,64 @@
                     </div>
                 </div>
 
-             
+
             </div>
         </div>
-        <!-- FIM PAGINA 3 PARTE 2-->
+    </div>
+    <!-- FIM PAGINA 3 PARTE 2-->
 
 
-        <!-- PAGINA 3 PARTE 3-->
+    <!-- PAGINA 3 PARTE 3-->
 
-        <div class="page32 escondido">
-            <div class="header3">
-                <div class="headtitle3">BuzzQuizz</div>
-            </div>
-            <div class="body3">
-                <div class="box32">
-                    <div class="title3">Agora, decida os níveis
-                    </div>
-                    <div class="questions31" id="11" data-test="level-ctn">
-                        <div class="setor">
-                            <div class="title31">Nível 1</div>
-                            <input type="text" class="levtitle" placeholder="Título do nível" data-test="level-input">
-                            <input type="text" class="acertitle" placeholder="% de acerto mínima"
-                                data-test="level-percent-input">
-                            <input type="text" class="levimg" placeholder="URL da imagem do nível"
-                                data-test="level-img-input">
-                            <input type="text" class="levdesc" placeholder="Descrição do nível"
-                                data-test="level-description-input">
-                        </div>
-                    </div>
-                    <button onclick="levels3()" class="proceed3 escondido" data-test="finish">Finalizar Quizz</button>'
+    <div class="page32">
+        <div class="header3">
+            <div class="headtitle3">BuzzQuizz</div>
+        </div>
+        <div class="body3">
+            <div class="box32">
+                <div class="title3">Agora, decida os níveis
                 </div>
-            </div>
-        </div>
-        <!-- FIM PAGINA 3 PARTE 3-->
-
-        <!-- PAGINA 3 PARTE 4-->
-        <div class="page33 escondido">
-            <div class="header3">
-                <div class="headtitle3">BuzzQuizz</div>
-            </div>
-            <div class="body3">
-                <div class="box3">
-                    <div class="title3">Seu quizz está pronto!</div>
-                    <div class="imgp3">
-                        <div class="fadeimg"></div>
-                        <div class="imgtitle33">${resposta.data.title}</div>
-                        <img src="${resposta.data.image}" class="img31"></img>
+                <div class="questions31" id="11" data-test="level-ctn">
+                    <div class="setor">
+                        <div class="title31">Nível 1</div>
+                        <input type="text" class="levtitle" placeholder="Título do nível" data-test="level-input">
+                        <input type="text" class="acertitle" placeholder="% de acerto mínima"
+                            data-test="level-percent-input">
+                        <input type="text" class="levimg" placeholder="URL da imagem do nível"
+                            data-test="level-img-input">
+                        <input type="text" class="levdesc" placeholder="Descrição do nível"
+                            data-test="level-description-input">
                     </div>
-                    <button class="proceed3" data-test="go-quiz">Acessar Quizz</button>
-                    <button onclick="home()" class="home" data-test="go-home">Voltar pra home</button>
                 </div>
+                <button onclick="levels3()" class="proceed3 escondido" data-test="finish">Finalizar Quizz</button>'
             </div>
         </div>
+    </div>
+    <!-- FIM PAGINA 3 PARTE 3-->
 
-        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-        <script src="./script.js"></script>
+    <!-- PAGINA 3 PARTE 4-->
+    <div class="page33 escondido">
+        <div class="header3">
+            <div class="headtitle3">BuzzQuizz</div>
+        </div>
+        <div class="body3">
+            <div class="box3">
+                <div class="title3">Seu quizz está pronto!</div>
+                <div class="imgp3">
+                    <div class="fadeimg"></div>
+                    <div class="imgtitle33">${resposta.data.title}</div>
+                    <img src="${resposta.data.image}" class="img31"></img>
+                </div>
+                <button class="proceed3" data-test="go-quiz">Acessar Quizz</button>
+                <button onclick="home()" class="home" data-test="go-home">Voltar pra home</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="./script.js"></script>
 </body>
 
 </html>

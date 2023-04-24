@@ -445,7 +445,7 @@ function basicdata3() {
         }
         box.innerHTML += '<button onclick="page323()" class="proceed3" data-test="go-create-levels">Prosseguir pra criar níveis</button>'
         for (i = 2; i <= numlev; i++) {
-            box2.innerHTML += '<div onclick="questions32(this)" data-test="toggle"> <div class= "questions312"  data-test="level-ctn"> <div class="title312">Nível ' + i + '</div><ion-icon name="create-outline"></ion-icon> </div> <div class="questions31 escondido  data-test="level-ctn" id="1' + i + '"> <div class="setor"> <div class="title31">Nível ' + i + '</div> <input type="text" class="levtitle" placeholder="Título do nível" data-test="level-input"> <input type="text" class="acertitle" placeholder="% de acerto mínima" data-test="level-percent-input"> <input type="text" class="levimg" placeholder="URL da imagem do nível" data-test="level-img-input"> <input type="text" class="levdesc" placeholder="Descrição do nível"  data-test="level-description-input"> </div> </div>';
+            box2.innerHTML += '<div class="tudao"><div class="questions312" data-test="level-ctn"> <div class="title312">Nível ' + i + '</div> <button class="toggle" onclick="questions32(this)" data-test="toggle"> <ion-icon name="create-outline"></ion-icon> </button> </div><div class="questions31 escondido  data-test="level-ctn" id="1' + i + '"> <div class="setor"> <div class="title31">Nível ' + i + '</div> <input type="text" class="levtitle" placeholder="Título do nível" data-test="level-input"> <input type="text" class="acertitle" placeholder="% de acerto mínima" data-test="level-percent-input"> <input type="text" class="levimg" placeholder="URL da imagem do nível" data-test="level-img-input"> <input type="text" class="levdesc" placeholder="Descrição do nível"  data-test="level-description-input"> </div> </div></div>';
         }
         box2.innerHTML += '<button onclick="levels3()" class="proceed3" data-test="finish">Finalizar Quizz</button>'
         createquizz.title = titlee;
@@ -519,11 +519,11 @@ function questions3() {
         if (titlee.length < 20 || regexi.test(cor) == false || qasw1 == '' || qasw2 == '') {
             alert('deu ruim');
             testador = false;
-            break
+            break;
         } else { console.log('i'); }
 
     }
-    if (testador = true) {
+    if (testador == true) {
         const page33 = document.querySelector('.page31');
         page33.classList.add('escondido');
         const pag1 = document.querySelector('.page32');
