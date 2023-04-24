@@ -6,11 +6,10 @@ let createquizz = {
     levels: []
 };
 const meusquizzes = [];
-createquizz.questions = [];
-createquizz.levels = [];
 //////////////////////
 ////// TOKEN //////
 axios.defaults.headers.common['Authorization'] = '9maaDDkKFQ1saSPY3udlpWmT';
+
 ////// PAGE 1 ////
 function page1to3() {
     const page1 = document.querySelector('.pag1');
@@ -33,38 +32,17 @@ function exibeTodosQuizz(resposta) {
     let data = resposta.data;
     let container = document.querySelector('.containertodosquizz');
     container.innerHTML = "";
-    let meusquizz = document.querySelector('.meusquizz');
-    meusquizz.innerHTML = "";
-
     for (let i = 0; i < data.length; i++) {
-        if(!meusquizzes.includes(data[i].id)){
-            container.innerHTML += `<div class="quizz1" id="${data[i].id}" onclick="fazerQuizz(${data[i].id})" data-test="others-quiz"">
-            <img src=${data[i].image} class="quizzimg1">
-            <div class="quizz1titulo">${data[i].title}</div>
-            </div>`
-        }
-        else{
-            meusquizz.innerHTML += `<div class="quizz1" id="${data[i].id}" onclick="fazerQuizz(${data[i].id})" data-test="others-quiz"">
-            <img src=${data[i].image} class="quizzimg1">
-            <div class="quizz1titulo">${data[i].title}</div>
-            </div>`
-        }   
-    }
-    if(meusquizz.innerHTML == ""){
-        let semquizz = document.querySelector('.semquizz1');
-        semquizz.classList.remove('escondido');
-        let comquizz = document.querySelector('.seusquizzes1')
-        comquizz.classList.add('escondido');
-    }
-    else{
-        let semquizz = document.querySelector('.semquizz1');
-        semquizz.classList.add('escondido');
-        let comquizz = document.querySelector('.seusquizzes1')
-        comquizz.classList.remove('escondido');
+        container.innerHTML += `<div class="quizz1" id="${data[i].id}" onclick="fazerQuizz(${data[i].id})" data-test="others-quiz"">
+        <img src=${data[i].image} class="quizzimg1">
+        <div class="quizz1titulo">${data[i].title}</div>
+    </div>`
     }
 }
 ////// PAGE 1 FIM ////
+
 // PAGINA 2 Quando a pessoa para selecionar a imagem da pergunta-1
+
 // obter o quizz do servidor
 function scrollToTop() {
     window.scrollTo(0, 0);
@@ -73,10 +51,14 @@ let qualQuizz;
 function fazerQuizz(p) {
     qualQuizz = p;
     let quizDoServidor = axios.get(`https://mock-api.driven.com.br/api/vm/buzzquizz/quizzes/${qualQuizz}`);
+
     // let quizDoServidor = axios.get('https://mock-api.driven.com.br/api/vm/buzzquizz/quizzes/55');
     quizDoServidor.then(deuCerto);
     page1to2();
 }
+
+
+
 //quizDoServidor.catch(naoDeuCerto);
 let opacidade;
 let numerodapergunta = 0;
@@ -89,6 +71,8 @@ let quantidadeDeLevel = 0;
 let contatarLevel = 0;
 let quantoAcertou = 0;
 let quantoAcertouFinal = 0;
+
+
 function deuCerto(resposta) {
     let limpar = document.querySelector('.interacao');
     limpar.innerHTML = '';
@@ -103,7 +87,9 @@ function deuCerto(resposta) {
             
     `
     scrollToTop();
+
     for (let n = 0; n < quantidadeDeQuestoes; n++) {
+
         // eu vou ver o answers.length e vou fazer um teste
         let quantasImagens = resposta.data.questions[n].answers.length;
         let cor = resposta.data.questions[n].color;
@@ -113,6 +99,7 @@ function deuCerto(resposta) {
                 embaralhado.push(i)
             }
             embaralhado.sort(function () { return 0.5 - Math.random() })
+
             limpar.innerHTML += `
             <div class=" pergunta pergunta${[n]}" data-test="question">
                 <div class="pergunta-1" data-test="question-title" style="background-color: ${cor}">
@@ -134,12 +121,16 @@ function deuCerto(resposta) {
                 </div>
             </div>`
             embaralhado = [];
+
             // se answers.length  for = 3 so 1 segunda segunda e terceira
         } else if (quantasImagens === 3) {
+
             for (let i = 0; i < quantasImagens; i++) {
                 embaralhado.push(i)
+
             }
             embaralhado.sort(function () { return 0.5 - Math.random() })
+
             limpar.innerHTML += `
             <div class=" pergunta pergunta${[n]}" data-test="question">
                     <div class="pergunta-1" data-test="question-title" style="background-color: ${cor}">
@@ -165,11 +156,15 @@ function deuCerto(resposta) {
                     </div>
             </div> `
             embaralhado = [];
+
         } else if (quantasImagens === 4) {
+
             for (let i = 0; i < quantasImagens; i++) {
                 embaralhado.push(i)
+
             }
             embaralhado.sort(function () { return 0.5 - Math.random() })
+
             limpar.innerHTML += `
         <div class=" pergunta pergunta${[n]}" data-test="question">
                 <div class="pergunta-1" data-test="question-title" style="background-color: ${cor}">
@@ -201,12 +196,20 @@ function deuCerto(resposta) {
             embaralhado = [];
         }
     }
+
+
 }
+
+
+
+
 function selecionarResposta(respota1) {
+
     const respostaCerta = respota1.querySelector
     // ver se o selecionado é o certo
     if (respota1.classList.contains('true')) {
         verificarSeFoiTudoRespondido++;
+
         // acertou respota
         const respostaPergunta1 = respota1.querySelector('.nome');
         respostaPergunta1.classList.add('acertou');
@@ -216,11 +219,13 @@ function selecionarResposta(respota1) {
         const ver = document.querySelectorAll(`.pergunta${numerodapergunta} .naoCelecionado`);
         porcentagemDeAcerto++;
         // const certo = ver.querySelector('true');
+
         for (let i = 0; i < ver.length; i++) {
             ver[i].classList.add('opacidade');
             let errou = ver[i].querySelector('.nome');
             errou.classList.add('errou');
             ver[i].onclick = null;
+
         }
         setTimeout(mostrar, 2000);
         function mostrar() {
@@ -236,12 +241,17 @@ function selecionarResposta(respota1) {
         numerodapergunta++;
         if ((quantidadeDeQuestoes === verificarSeFoiTudoRespondido) === true) {
             mostraResultado();
+
         }
+
+
+
     } else {
         verificarSeFoiTudoRespondido++;
         //errou a resposta
         const certo = document.querySelector(`.pergunta${numerodapergunta} .true .nome`);
         certo.classList.add('acertou');
+
         const certo1 = document.querySelector(`.pergunta${numerodapergunta} .true `)
         certo1.classList.remove('naoCelecionado');
         certo1.classList.add('opacidade');
@@ -251,20 +261,24 @@ function selecionarResposta(respota1) {
         respota1.classList.remove('naoCelecionado');
         const selecionadoPeloUsuario = respota1.querySelector('.imagem');
         const ver = document.querySelectorAll(`.pergunta${numerodapergunta} .naoCelecionado`);
+
         for (let i = 0; i < ver.length; i++) {
             ver[i].classList.add('opacidade');
             let errou = ver[i].querySelector('.nome');
             errou.classList.add('errou');
             ver[i].onclick = null;
+
         }
         setTimeout(mostrar, 2000);
         function mostrar() {
             let retirar = document.querySelector(`.pergunta${numerodapergunta} `);
             if (retirar !== null) {
+
                 retirar.classList.remove('escondido');
                 window.scrollTo({
                     top: retirar.offsetTop,
                     behavior: 'smooth'
+
                 });
             }
         }
@@ -272,19 +286,27 @@ function selecionarResposta(respota1) {
         if (quantidadeDeQuestoes === verificarSeFoiTudoRespondido) {
             setTimeout(mostraResultado, 2000);
         }
+
     }
 }
+
+
 function mostraResultado() {
+
     quantoAcertou = (porcentagemDeAcerto / quantidadeDeQuestoes) * 100;
     quantoAcertouFinal = Math.floor(quantoAcertou);
     let levelDoServido = axios.get(`https://mock-api.driven.com.br/api/vm/buzzquizz/quizzes/${qualQuizz}`);
     //let levelDoServido = axios.get('https://mock-api.driven.com.br/api/vm/buzzquizz/quizzes/55');
     levelDoServido.then(caixaFinal);
+
+
 }
+
 function scrollToBottom() {
     let altura = document.documentElement.scrollHeight - window.innerHeight;
     window.scrollTo(0, altura);
 }
+
 function caixaFinal(resposta) {
     let filtrador = 0;
     for (let i = 0; i < quantidadeDeLevel; i++) {
@@ -312,7 +334,9 @@ function caixaFinal(resposta) {
             scrollToBottom();
         }
     }
+
 }
+
 function reiniciar() {
     let quizDoServidore = axios.get(`https://mock-api.driven.com.br/api/vm/buzzquizz/quizzes/${qualQuizz}`);
     // let quizDoServidore = axios.get('https://mock-api.driven.com.br/api/vm/buzzquizz/quizzes/55');
@@ -323,13 +347,19 @@ function reiniciar() {
     porcentagemDeAcerto = 0;
     verificarSeFoiTudoRespondido = 0;
 }
+
 function voltarHome() {
     const verSeTemEsconcido = document.querySelector('.pagina2');
     verSeTemEsconcido.classList.add('escondido');
     const pagina21 = document.querySelector('.pag1');
     pagina21.classList.remove('escondido');
 }
+
+
+
 ////// PAGE 3 ////
+
+
 //PAGE 3 Sair da página de opções básicas de Quizz e ir para perguntas//
 function page312() {
     const page3 = document.querySelector('.page3');
@@ -351,6 +381,7 @@ function page323() {
     }
     else { }
 }
+
 function troc() {
     const page32 = document.querySelector('.page32');
     const page33 = document.querySelector('.page33');
@@ -363,9 +394,7 @@ function troc() {
 ///PAGE 3 Sair da página de Níveis e finalizar o quizz///
 function qpronto() {
     let promisse = axios.post('https://mock-api.driven.com.br/api/vm/buzzquizz/quizzes', createquizz);
-    console.log(promisse);
     promisse.then(page334);
-    promisse.catch(alert('server indisponivel'))
     promisse.catch(alert('erro'))
 }
 
@@ -397,8 +426,11 @@ function questions32(question) {
     const quest = tudo.querySelector('.questions31');
     questmenu.classList.add('escondido');
     quest.classList.remove('escondido');
+
 }
 //////
+
+
 function basicdata3() {
     let titlee = document.querySelector('.quiztitle3').value;
     let img = document.querySelector('.quizimgurl3').value;
@@ -422,6 +454,7 @@ function basicdata3() {
     }
     else { alert('siga os requisitos corretos') }
 }
+
 function questions3() {
     let numques = document.querySelector('.quiznump3').value;
     let boxq = document.querySelector('.box31');
@@ -433,33 +466,41 @@ function questions3() {
         let question = document.getElementById(i + 1);
         let titlee = question.querySelector('.qtitle').value;
         let cor = question.querySelector('.qcolor').value;
+
         let asw1 = question.querySelector('.right');
         let qasw1 = asw1.querySelector('.qansw3').value;
         let iasw1 = asw1.querySelector('.qimg3').value;
+
         let asw2 = question.querySelector('.wrong1');
         let qasw2 = asw2.querySelector('.qansw3').value;
         let iasw2 = asw2.querySelector('.qimg3').value;
+
         let asw3 = question.querySelector('.wrong2');
         let qasw3 = asw3.querySelector('.qansw3').value;
         let iasw3 = asw3.querySelector('.qimg3').value;
+
         let asw4 = question.querySelector('.wrong3');
         let qasw4 = asw4.querySelector('.qansw3').value;
         let iasw4 = asw4.querySelector('.qimg3').value;
+
         createquizz.questions.push({
             title: titlee,
             color: cor,
             answers: []
         });
+
         createquizz.questions[i].answers.push({
             text: qasw1,
             image: iasw1,
             isCorrectAnswer: true
         });
+
         createquizz.questions[i].answers.push({
             text: qasw2,
             image: iasw2,
             isCorrectAnswer: false
         });
+
         if (qasw3 != '') {
             createquizz.questions[i].answers.push({
                 text: qasw3,
@@ -467,6 +508,7 @@ function questions3() {
                 isCorrectAnswer: false
             })
         };
+
         if (qasw4 != '') {
             createquizz.questions[i].answers.push({
                 text: qasw4,
@@ -474,12 +516,12 @@ function questions3() {
                 isCorrectAnswer: false
             })
         };
+
         if (titlee.length < 20 || regexi.test(cor) == false || qasw1 == '' || qasw2 == '') {
             alert('deu ruim');
             testador = 0;
             break;
         } else { console.log('i'); }
-
     }
     if (testador == 1) {
         const page33 = document.querySelector('.page31');
@@ -487,8 +529,10 @@ function questions3() {
         const pag1 = document.querySelector('.page32');
         pag1.classList.remove('escondido');
         window.scrollTo(0, 0);
+
     }
 }
+
 function levels3() {
     let numlev = document.querySelector('.quizlev3').value;
     const regex = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i;
@@ -506,18 +550,22 @@ function levels3() {
             testador = false;
             break;
         }
+
         createquizz.levels.push({
             title: levtitlee,
             image: image = levimg,
             text: levdesc,
             minValue: levporc,
         });
+
         if (regex.test(levimg)) { } else {
             createquizz.levels = [];
             alert('deuruim');
             testador = false;
+
             break;
         }
+
         if (levporc < 0 && levporc > 100) {
             createquizz.levels = [];
             alert('deuruim');
