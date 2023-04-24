@@ -72,7 +72,7 @@ function deuCerto(resposta) {
     quantidadeDeLevel = resposta.data.levels.length;
     limpar.innerHTML += `
             <div class="banner-imagem" data-test="banner" >
-                <img src="${resposta.data.image}" alt=""> 
+                <img class="banner-imagem-img" src="${resposta.data.image}" alt=""> 
                 <p>${resposta.data.title}</p>
             </div>
             
