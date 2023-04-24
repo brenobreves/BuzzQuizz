@@ -615,4 +615,7 @@ function levels3() {
         qpronto();
     }
 }
+function fazerUltQuizz(){
+    fazerQuizz(meusquizzes[meusquizzes.length-1]);
+}
 ////// PAGE 3 FIM /////
