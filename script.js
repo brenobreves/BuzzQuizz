@@ -85,7 +85,8 @@ function fazerQuizz(p) {
     qualQuizz = p;
     let quizDoServidor = axios.get(`https://mock-api.driven.com.br/api/vm/buzzquizz/quizzes/${qualQuizz}`);
 
-    // let quizDoServidor = axios.get('https://mock-api.driven.com.br/api/vm/buzzquizz/quizzes/55');
+
+     //let quizDoServidor = axios.get('https://mock-api.driven.com.br/api/vm/buzzquizz/quizzes/55');
     quizDoServidor.then(deuCerto);
     page1to2();
 }
@@ -96,6 +97,8 @@ function fazerQuizz(p) {
 let opacidade;
 let numerodapergunta = 0;
 let embaralhado = [];
+let levels = [];
+let levelsOrdenados = [];
 let porcentagemDeAcerto = 0;
 let verificarSeFoiTudoRespondido = 0;
 let quantidadeDeQuestoes = 0;
@@ -106,11 +109,23 @@ let quantoAcertou = 0;
 let quantoAcertouFinal = 0;
 
 
+
 function deuCerto(resposta) {
     let limpar = document.querySelector('.interacao');
     limpar.innerHTML = '';
     quantidadeDeQuestoes = resposta.data.questions.length;
     level = resposta.data.levels;
+    levels = level;
+  
+
+    levels.sort(function (x, y) {
+ 
+       return y.minValue - x.minValue;
+
+});
+
+   
+
     quantidadeDeLevel = resposta.data.levels.length;
     limpar.innerHTML += `
             <div class="banner-imagem" data-test="banner" >
@@ -327,9 +342,9 @@ function selecionarResposta(respota1) {
 function mostraResultado() {
 
     quantoAcertou = (porcentagemDeAcerto / quantidadeDeQuestoes) * 100;
-    quantoAcertouFinal = Math.floor(quantoAcertou);
+    quantoAcertouFinal = Math.round(quantoAcertou);
     let levelDoServido = axios.get(`https://mock-api.driven.com.br/api/vm/buzzquizz/quizzes/${qualQuizz}`);
-    //let levelDoServido = axios.get('https://mock-api.driven.com.br/api/vm/buzzquizz/quizzes/55');
+   // let levelDoServido = axios.get('https://mock-api.driven.com.br/api/vm/buzzquizz/quizzes/55');
     levelDoServido.then(caixaFinal);
 
 
@@ -342,23 +357,24 @@ function scrollToBottom() {
 
 function caixaFinal(resposta) {
     let filtrador = 0;
+
     for (let i = 0; i < quantidadeDeLevel; i++) {
-        if (quantoAcertouFinal >= resposta.data.levels[i].minValue && filtrador === 0) {
+        if (quantoAcertouFinal >= levels[i].minValue && filtrador === 0) {
             let divDosAcertos = document.querySelector('.interacao');
             divDosAcertos.innerHTML += ` 
            <div class=" finalizando-acerto" >
                <div class=" nivel-acerto " data-test="level-title">
-                   <p> ${quantoAcertouFinal}% de acerto: ${resposta.data.levels[i].title} </p>
+                   <p> ${quantoAcertouFinal}% de acerto: ${levels[i].title} </p>
                </div>
                <div class=" tudo-acerto ">
                    <div class=" lado-esquerdo-acerto ">
                        <div class=" imagem-acerto " data-test="level-img">
-                        <img class="imagem-acerto" src="${resposta.data.levels[i].image}" > 
+                        <img class="imagem-acerto" src="${levels[i].image}" > 
                        </div>
                    </div>
                    <div class=" lado-direito-acerto ">
                        <div class=" texto-acerto " data-test="level-text">
-                           <p> ${resposta.data.levels[i].text} </p>
+                           <p> ${levels[i].text} </p>
                        </div>
                    </div>
                </div>
@@ -368,11 +384,37 @@ function caixaFinal(resposta) {
         }
     }
 
+
+    if(filtrador === 0 ){
+     
+        let divDosAcertos = document.querySelector('.interacao');
+        divDosAcertos.innerHTML += ` 
+       <div class=" finalizando-acerto" >
+           <div class=" nivel-acerto " data-test="level-title">
+               <p> ${quantoAcertouFinal}% de acerto: ${levels[quantidadeDeLevel-1].title} </p>
+           </div>
+           <div class=" tudo-acerto ">
+               <div class=" lado-esquerdo-acerto ">
+                   <div class=" imagem-acerto " data-test="level-img">
+                    <img class="imagem-acerto" src="${levels[quantidadeDeLevel-1].image}" > 
+                   </div>
+               </div>
+               <div class=" lado-direito-acerto ">
+                   <div class=" texto-acerto " data-test="level-text">
+                       <p> ${levels[quantidadeDeLevel-1].text} </p>
+                   </div>
+               </div>
+           </div>
+       </div>`
+        filtrador++;
+    }
+
+
 }
 
 function reiniciar() {
     let quizDoServidore = axios.get(`https://mock-api.driven.com.br/api/vm/buzzquizz/quizzes/${qualQuizz}`);
-    // let quizDoServidore = axios.get('https://mock-api.driven.com.br/api/vm/buzzquizz/quizzes/55');
+    //let quizDoServidore = axios.get('https://mock-api.driven.com.br/api/vm/buzzquizz/quizzes/55');
     quizDoServidore.then(deuCerto);
     numerodapergunta = 0;
     quantoAcertou = 0;
@@ -432,7 +474,7 @@ function qpronto() {
     promisse.then(page334);
 }
 
-function page334(promisse){
+function page334(promisse) {
     console.log(promisse);
     meusquizzes.push(promisse.data.id);
     const novoidSerializado = JSON.stringify(meusquizzes);
@@ -443,7 +485,7 @@ function page334(promisse){
     page33.classList.remove('escondido');
     window.scrollTo(0, 0);
     let imgp3 = document.querySelector('.imgp3');
-    imgp3.innerHTML += '<div class="fadeimg"></div><div class="imgtitle33">'+promisse.data.title+'</div><img src="'+promisse.data.image+'" class="img31"></img>';
+    imgp3.innerHTML += '<div class="fadeimg"></div><div class="imgtitle33">' + promisse.data.title + '</div><img src="' + promisse.data.image + '" class="img31"></img>';
 }
 //////
 ///// PAGE 3 Quizz finalizado, voltar pra home ////
