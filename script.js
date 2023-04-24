@@ -6,6 +6,16 @@ let createquizz = {
     levels: []
 };
 const meusquizzes = [];
+let listaLocalQuizzes = localStorage.getItem("idslocais");
+if(listaLocalQuizzes !== null){
+    console.log("Entrei no if");
+    let arraySalvo = JSON.parse(listaLocalQuizzes);
+    for(let i = 0 ; i < arraySalvo.length ; i++){
+        meusquizzes.push(arraySalvo[i]);
+        console.log(i);
+    }
+}
+
 //////////////////////
 ////// TOKEN //////
 axios.defaults.headers.common['Authorization'] = '9maaDDkKFQ1saSPY3udlpWmT';
@@ -426,6 +436,8 @@ function qpronto() {
 function page334(promisse){
     console.log(promisse);
     meusquizzes.push(promisse.data.id);
+    const novoidSerializado = JSON.stringify(meusquizzes);
+    localStorage.setItem("idslocais", novoidSerializado);
     const page32 = document.querySelector('.page32');
     const page33 = document.querySelector('.page33');
     page32.classList.add('escondido');
