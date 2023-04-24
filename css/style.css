@@ -125,7 +125,9 @@ button:hover {
 
 .quizz1titulo {
     position: relative;
-    bottom: 40px;
+    word-break: break-word;
+    width: 306px;
+    bottom: 45px;
     left: 17px;
     font-family: 'Roboto';
     font-style: normal;

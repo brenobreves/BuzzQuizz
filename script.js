@@ -6,6 +6,16 @@ let createquizz = {
     levels: []
 };
 const meusquizzes = [];
+let listaLocalQuizzes = localStorage.getItem("idslocais");
+if(listaLocalQuizzes !== null){
+    console.log("Entrei no if");
+    let arraySalvo = JSON.parse(listaLocalQuizzes);
+    for(let i = 0 ; i < arraySalvo.length ; i++){
+        meusquizzes.push(arraySalvo[i]);
+        console.log(i);
+    }
+}
+
 //////////////////////
 ////// TOKEN //////
 axios.defaults.headers.common['Authorization'] = '9maaDDkKFQ1saSPY3udlpWmT';
@@ -32,11 +42,34 @@ function exibeTodosQuizz(resposta) {
     let data = resposta.data;
     let container = document.querySelector('.containertodosquizz');
     container.innerHTML = "";
+    let meusquizz = document.querySelector('.meusquizz');
+    meusquizz.innerHTML = "";
+
     for (let i = 0; i < data.length; i++) {
-        container.innerHTML += `<div class="quizz1" id="${data[i].id}" onclick="fazerQuizz(${data[i].id})" data-test="others-quiz"">
-        <img src=${data[i].image} class="quizzimg1">
-        <div class="quizz1titulo">${data[i].title}</div>
-    </div>`
+        if(!meusquizzes.includes(data[i].id)){
+            container.innerHTML += `<div class="quizz1" id="${data[i].id}" onclick="fazerQuizz(${data[i].id})" data-test="others-quiz"">
+            <img src=${data[i].image} class="quizzimg1">
+            <div class="quizz1titulo">${data[i].title}</div>
+            </div>`
+        }
+        else{
+            meusquizz.innerHTML += `<div class="quizz1" id="${data[i].id}" onclick="fazerQuizz(${data[i].id})" data-test="others-quiz"">
+            <img src=${data[i].image} class="quizzimg1">
+            <div class="quizz1titulo">${data[i].title}</div>
+            </div>`
+        }   
+    }
+    if(meusquizz.innerHTML == ""){
+        let semquizz = document.querySelector('.semquizz1');
+        semquizz.classList.remove('escondido');
+        let comquizz = document.querySelector('.seusquizzes1')
+        comquizz.classList.add('escondido');
+    }
+    else{
+        let semquizz = document.querySelector('.semquizz1');
+        semquizz.classList.add('escondido');
+        let comquizz = document.querySelector('.seusquizzes1')
+        comquizz.classList.remove('escondido');
     }
 }
 ////// PAGE 1 FIM ////
@@ -393,6 +426,8 @@ function reiniciar() {
 function voltarHome() {
     const verSeTemEsconcido = document.querySelector('.pagina2');
     verSeTemEsconcido.classList.add('escondido');
+    let pegaTodosQuizz = axios.get("https://mock-api.driven.com.br/api/vm/buzzquizz/quizzes");
+    pegaTodosQuizz.then(exibeTodosQuizz);
     const pagina21 = document.querySelector('.pag1');
     pagina21.classList.remove('escondido');
 }
@@ -437,12 +472,13 @@ function troc() {
 function qpronto() {
     let promisse = axios.post('https://mock-api.driven.com.br/api/vm/buzzquizz/quizzes', createquizz);
     promisse.then(page334);
-    promisse.catch(alert('erro'))
 }
 
 function page334(promisse) {
     console.log(promisse);
     meusquizzes.push(promisse.data.id);
+    const novoidSerializado = JSON.stringify(meusquizzes);
+    localStorage.setItem("idslocais", novoidSerializado);
     const page32 = document.querySelector('.page32');
     const page33 = document.querySelector('.page33');
     page32.classList.add('escondido');
@@ -456,6 +492,8 @@ function page334(promisse) {
 function home() {
     const page33 = document.querySelector('.page33');
     page33.classList.add('escondido');
+    let pegaTodosQuizz = axios.get("https://mock-api.driven.com.br/api/vm/buzzquizz/quizzes");
+    pegaTodosQuizz.then(exibeTodosQuizz);
     const pag1 = document.querySelector('.pag1');
     pag1.classList.remove('escondido');
     window.scrollTo(0, 0);
